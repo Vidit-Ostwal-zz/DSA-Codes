@@ -57,6 +57,7 @@ vector<char> printskipachar1(string characters,int index,vector<char>&answer)
 - Base condition return a empty vector
 Every call make a new vector add current answer call to it
 makes another vector and calls a recursion on it, add those two vector and then return the whole vector
+add current answer and also the next recursion call and then return it.
 */
 vector<char> printskipachar2(string characters,int index)
 {
