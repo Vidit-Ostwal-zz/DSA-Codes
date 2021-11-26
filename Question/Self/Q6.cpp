@@ -1,4 +1,6 @@
 // Online C++ compiler to run C++ program online
+// Different Approaches
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -28,3 +30,96 @@ int main() {
     int answer = number_of_ways(3,3,"");
     std::cout << answer;
 }
+
+
+-----------------------------------------------------------------------------------------------;
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+void print(vector<string> answer)
+{
+    for (int i =0 ; i < answer.size();i++)
+    {
+        cout << answer[i]<< endl;
+    }
+}
+
+vector<string>  number_of_ways(int rows,int columns,string temp)
+{
+    if (rows == 1 || columns == 1)
+    {
+        while (rows != 1)
+        {
+            temp += 'D';
+            rows--;
+        }
+        while (columns != 1)
+        {
+            temp += 'R';
+            columns--;
+        }
+        vector<string> final_vector;
+        final_vector.push_back(temp);
+        return final_vector;
+    }
+    
+    vector<string> temp_answer1 = number_of_ways(rows-1,columns,temp+'D');
+    vector<string> temp_answer2 = number_of_ways(rows,columns-1,temp+'R');
+    temp_answer1.insert(temp_answer1.end(),temp_answer2.begin(),temp_answer2.end());
+    return temp_answer1;
+}
+
+int main() {
+    vector<string> answer = number_of_ways(3,3,"");
+    print(answer);
+}
+
+
+
+----------------------------------------------------------------------------------------;
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+void print(vector<string> answer)
+{
+    for (int i =0 ; i < answer.size();i++)
+    {
+        cout << answer[i]<< endl;
+    }
+}
+
+void number_of_ways(int rows,int columns,string temp,vector<string> &answer)
+{
+    if (rows == 1 || columns == 1)
+    {
+        while (rows != 1)
+        {
+            temp += 'D';
+            rows--;
+        }
+        while (columns != 1)
+        {
+            temp += 'R';
+            columns--;
+        }
+       
+        answer.push_back(temp);
+        return ;
+    }
+    
+    number_of_ways(rows-1,columns,temp+'D',answer);
+    number_of_ways(rows,columns-1,temp+'R',answer);
+   
+}
+
+int main() {
+    vector<string> answer;
+    number_of_ways(4,3,"",answer);
+    print(answer);
+}
+
+    
