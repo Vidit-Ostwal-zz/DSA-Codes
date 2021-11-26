@@ -1,6 +1,6 @@
 /* Backtracking two different approach we have to mark the current cell as false in both the condition
 1> Boolean vector passed as just a value, so we don't need to change it again to true as the changes will never be reflected 
-2> Boolean vector passed as pointer we need to add a arguement to change the cell again to true value
+2> Boolean vector passed as pointer we need to add a arguement to change the cell again to true value << Thing what will happen when it's just a cell away from the (2,2) cell)
 */
 ---------------------------------------------------------------------------------------------------------------------------;
 // Online C++ compiler to run C++ program online
