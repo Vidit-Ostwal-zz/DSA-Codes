@@ -1,3 +1,11 @@
+/*
+Space Complexity = O(N*N) Path variable
+Recursion Relation = T(N) = N*T(N-1) + O(N*N) for comparisions 
+Time Complexity = Akra bazii formulae
+O(N^3 + N!)
+Time Complexity O(N!)
+*/  
+  
 class Solution {
 public:
   void print(vector<vector<bool>> boolean)
