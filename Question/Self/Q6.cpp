@@ -80,6 +80,7 @@ int main() {
 
 ----------------------------------------------------------------------------------------;
 // Online C++ compiler to run C++ program online
+/* Another way when base condition is of both row and column 1-1, here condtion are made over the recursive calls*/
 #include <iostream>
 #include <string>
 #include <vector>
@@ -122,4 +123,47 @@ int main() {
     print(answer);
 }
 
+---------------------------------------------------------------------------------------------------------------------;
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+void print(vector<string> answer)
+{
+    cout << answer.size()<<endl;
+    for (int i =0 ; i < answer.size();i++)
+    {
+        cout << answer[i]<< endl;
+    }
+}
+
+void number_of_ways(int rows,int columns,string temp,vector<string> &answer)
+{
+    if (rows == 1 && columns == 1)
+    {
+        answer.push_back(temp);
+        return ;
+    }
     
+    if (rows>1)
+    {
+        number_of_ways(rows-1,columns,temp+'D',answer);
+    }
+    if (columns > 1)
+    {
+        number_of_ways(rows,columns-1,temp+'R',answer);
+    }
+    if (columns > 1 && rows > 1)
+    {
+        number_of_ways(rows-1,columns-1,temp+'d',answer);
+    }
+   
+}
+
+int main() {
+    vector<string> answer;
+    number_of_ways(4,3,"",answer);
+    print(answer);
+}
+
