@@ -97,6 +97,8 @@ void place_knights(vector<vector<bool>>path,int count_left,int &count,vector<vec
             if (path[row_count][col_count])
             {
                 show_path[row_count][col_count] = 'K';
+                /*the current position is made fasle for all the next iteration to make sure that when next iteration happens this position is aldready false, why becasue it would create multiplew copies 
+                which are not required one can try this by removing this from here and putting into the get_updated_path function*/
                 path[row_count][col_count] = false;
                 vector<vector<bool>> temp_path = get_updated_path(path,row_count,col_count);
                 place_knights(temp_path,count_left-1,count,show_path);
