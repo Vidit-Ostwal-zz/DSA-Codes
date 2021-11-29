@@ -21,6 +21,6 @@ public:
         {
             return kthGrammar(n-1,k);
         }
-        return kthGrammar(n-1,k-mid);
+        return !kthGrammar(n-1,k-mid);
     }
 };
