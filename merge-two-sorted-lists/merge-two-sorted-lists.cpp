@@ -8,6 +8,11 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+/* Time Complexity = O(N+M), comparing all the linked list data one by one. 
+Making a new linked list of it
+Space Complexity = O(N+M)
+*/
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
