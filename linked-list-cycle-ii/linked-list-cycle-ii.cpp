@@ -6,6 +6,19 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+/*
+
+Time and Space Complexity = O(N)
+Problem deals with cycle therefore two pointer approach
+
+Find the length of the cycle
+Again use two pointers,
+now we want them to meet at the starting of cycle,
+for that we need one pointer to go through the cycle and meet at starting and other one we want to meet when it first lands there
+the pointer which is traversing the cycle needs to go length of cycle more steps
+that's why a while loop to traverse length of cycle time and then a loop which traverses till both are not equal
+*/
 class Solution {
 public:
   int lengthcycle(ListNode *head)
