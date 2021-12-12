@@ -13,6 +13,12 @@ Space Complexity = O(N)
 Time Complexity = O(N)
 
 They will gurantely meet once slow pointer enters the cycle (if present)
+
+Bluid over this find the length of cycle
+After knowing that there is a cycle, instead of returning true, iterate or use do-while loop and increase slow by one 
+and keep fast there only, and keep increasing the count, once they agian meet, return the count.
+
+If cycle is not there return 0
 */
 class Solution {
 public:
