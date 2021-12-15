@@ -11,7 +11,7 @@
 class Solution {
 public:
   
-  /* Merges two Sorted Linked List*/
+  /*Does the work of merging two sorted linked list in a sorted manner*/
   ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
       ListNode* node1 = list1;
       ListNode* node2 = list2;
@@ -83,22 +83,18 @@ public:
       return finaldefinedpointer;
     }
   
-  
-  void printlinkedList (ListNode* node)
-  {
-    while (node != NULL)
+  /*Returns the previous node of the linked list*/
+  ListNode* prevmiddleNode(ListNode* head) {
+    
+    if (head == NULL || head -> next == NULL)
     {
-      cout << node -> val ; 
-      node = node -> next;
+      return head;
     }
-    cout << endl;
-  }
-  ListNode* middleNode(ListNode* head) {
-    cout << " Noooooo"  << endl;
       ListNode* slow = head;
       ListNode* fast = head;
-      ListNode* slowprev;
-      while (fast-> next != NULL)
+      ListNode* prevslow = slow;
+    
+      while (fast -> next != NULL)
       {
         if (fast -> next -> next != NULL)
         {
@@ -108,26 +104,34 @@ public:
         {
           fast = fast -> next;
         }
-        slowprev = slow;
+        prevslow = slow;
         slow = slow -> next;
       }
-    slowprev -> next = NULL;
-    printlinkedList(head);
-    printlinkedList(slow);
-      return slow;
+    ListNode* mid = slow;
+    prevslow->next = NULL;
+      return mid;
     }
-
-    ListNode* sortList(ListNode* head){
-      cout << "Fuck Me" << endl;
-      if (head == NULL || head -> next == NULL)
+  
+   void printlinkedList (ListNode* node)
+  {
+    while (node != NULL)
+    {
+      cout << node -> val ; 
+      node = node -> next;
+    }
+    cout << endl;
+  }
+  
+    ListNode* sortList(ListNode* head) {
+      
+      if (head == NULL || head-> next == NULL)
       {
         return head;
       }
-      ListNode* mid = middleNode(head);
-      
+      ListNode* mid = prevmiddleNode(head);
       ListNode* left = sortList(head);
       ListNode* right = sortList(mid);
-      ListNode* Head = mergeTwoLists(left,right);
-      return Head;
+      
+      return mergeTwoLists(left,right);
     }
 };
