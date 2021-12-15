@@ -83,7 +83,17 @@ public:
       return finaldefinedpointer;
     }
   
-  /*Returns the previous node of the linked list*/
+  /* prints the whole linked list*/
+  void printlinkedList (ListNode* node) {
+    while (node != NULL)
+    {
+      cout << node -> val ; 
+      node = node -> next;
+    }
+    cout << endl;
+  }
+  
+  /*Returns the middle node pointer of the linked list also breaks the chain*/
   ListNode* prevmiddleNode(ListNode* head) {
     
     if (head == NULL || head -> next == NULL)
@@ -112,16 +122,8 @@ public:
       return mid;
     }
   
-   void printlinkedList (ListNode* node)
-  {
-    while (node != NULL)
-    {
-      cout << node -> val ; 
-      node = node -> next;
-    }
-    cout << endl;
-  }
   
+  /* Merge Sort Apprach used*/
     ListNode* sortList(ListNode* head) {
       
       if (head == NULL || head-> next == NULL)
