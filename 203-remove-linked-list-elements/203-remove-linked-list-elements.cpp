@@ -21,7 +21,6 @@ public:
         {
           if (presentnode == head)
           {
-            cout << " Yes" << endl;
             head = head -> next;
             presentnode = head;
             previousnode = head;
