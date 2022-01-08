@@ -1,5 +1,8 @@
 class Solution {
 public:
+  
+  /*Two Pointer Approach*/
+  
     int minSubArrayLen(int target, vector<int>& nums) {
         int start_index = 0;
       int end_index = 0;
