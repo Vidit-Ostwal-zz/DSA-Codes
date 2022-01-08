@@ -1,7 +1,8 @@
 class Solution {
 public:
-    int minAddToMakeValid(string s) {
-      stack <int> st;
+  int stack_apporach (string s)
+  {
+    stack <int> st;
         for (int i = 0; i < s.length(); i++)
         {
           char charac = s[i];
@@ -19,5 +20,28 @@ public:
           }
         }
       return st.size();
+  }
+  
+  int without_stack (string s)
+  {
+    int count = 0;
+    int balance = 0;
+    for (int i = 0; i < s.length(); i++)
+    {
+      balance += s[i] == '(' ? 1 : -1;
+      if (balance  < 0)
+      {
+        count++;
+        balance++;
+      }
+    }
+    
+    return count+balance;
+  }
+  
+  
+  
+    int minAddToMakeValid(string s) {
+      return without_stack(s);
     }
 };
