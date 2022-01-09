@@ -52,7 +52,6 @@ public:
   Also sort so that founding the repeated element is easy
   Time Complexity = O(N * 2^N)
   N iteration and 2^N for copying the elements
-  
   Space Complexity = O(2^N  * N)
   */
   vector<vector<int>> iterative_approach(vector<int> nums)
