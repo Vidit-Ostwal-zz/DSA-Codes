@@ -5,6 +5,12 @@ using namespace std;
  // } Driver Code Ends
 class Solution{
 public:
+
+
+/*
+Time Complexity : divide and conquer O(nlogn) * O(n)
+Space Complexity : Recursive Function Call 
+Maximum Height of the tree is O(N)*/
 int count_handshakes(int N)
 {
     if (N <= 2)
