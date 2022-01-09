@@ -42,7 +42,9 @@ public:
   
   
   /*Iterative Approach
-  Space Compleixty = O (2^N * N)
+  Space Compleixty = O (2^N*N)
+  Vector<vector<int>> space will be taken by each vector and how many vectors are we storing.
+  2^N Subsets and N space taken by each subset.
   
   Total Number of levels and time taken at each level.
   Time Complexity = O(N * 2^N) 
