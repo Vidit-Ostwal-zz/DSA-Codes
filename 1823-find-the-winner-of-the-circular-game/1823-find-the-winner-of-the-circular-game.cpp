@@ -1,5 +1,7 @@
 class Solution {
 public:
+  /*
+  Time and Space Complexity = O(N)*/
     int findTheWinner(int n, int k) {
         vector<int> final_vector;
       
