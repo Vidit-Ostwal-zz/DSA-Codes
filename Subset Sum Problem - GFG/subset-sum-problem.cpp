@@ -97,8 +97,7 @@ public:
                
                else
                memozise[a][b] = memozise[a-1][b];
-               
-       
+             
            }
        }
        
