@@ -59,6 +59,12 @@ class Solution
     
     
     /*Top -Down Appraoch*/
+    /*Complexity Analysis: 
+    Time Complexity: O(N*W).
+    where ‘N’ is the number of weight element and ‘W’ is capacity. As for every weight element we traverse through all weight capacities 1<=w<=W.
+    Auxiliary Space: O(N*W).
+    The use of 2-D array of size ‘N*W’.
+    Mostly both Memozization solution and top_down_solution will have same complexity.*/
     int top_down_solution (int W, int wt[], int val[], int n)
     {
         vector<vector<int>> memozise(n+1,vector<int>(W+1));
