@@ -27,6 +27,11 @@ class Solution
         }
     }
     
+    /*Complexity Analysis: 
+    Time Complexity: O(N*W).
+    where ‘N’ is the number of weight element and ‘W’ is capacity. As for every weight element we traverse through all weight capacities 1<=w<=W.
+    Auxiliary Space: O(N*W).
+    The use of 2-D array of size ‘N*W’.*/
     int memozization_solution (int left_weigth, int wt[], int val[], int index,vector<vector<int>> &memozise)
     {
         
@@ -36,7 +41,10 @@ class Solution
         
         /*Solution might be already calculated*/
         if (memozise[left_weigth][index] != -1)
-        return memozise[left_weigth][index];
+        {
+            return memozise[left_weigth][index];
+        
+        }
         
         /*Case when current weight is higher*/
         if (wt[index] > left_weigth)
