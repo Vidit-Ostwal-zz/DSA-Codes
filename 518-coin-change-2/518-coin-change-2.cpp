@@ -79,15 +79,6 @@ public:
                memozise[a][b] = memozise[a-1][b];
            }
        }
-      
-      for (int a = 0; a <= n; a++)
-       {
-           for (int b = 0; b <= W;b++)
-           {
-               cout << memozise[a][b];
-           }
-        cout << endl;
-       }
        return memozise[n][W];
     }
   
