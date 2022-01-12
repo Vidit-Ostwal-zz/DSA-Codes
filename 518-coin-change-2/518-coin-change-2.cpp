@@ -58,7 +58,7 @@ public:
     Auxiliary Space: O(N*W).
     The use of 2-D array of size ‘N*W’.
     Mostly both Memozization solution and top_down_solution will have same complexity.*/
-    int top_down_solution (int W, vector<int> wt, int val[], int n)
+    int top_down_solution (int W, vector<int> wt, int n)
     {
         vector<vector<int>> memozise(n+1,vector<int>(W+1));
        
@@ -66,22 +66,36 @@ public:
        {
            for (int b = 0; b <= W;b++)
            {
-               if (a == 0 || b == 0)
+               if (b == 0)
+               memozise[a][b] = 1;
+             
+               else if (a == 0)
                memozise[a][b] = 0;
                
                else if (wt[a-1] <=  b)
-               memozise[a][b] = max(val[a-1] + memozise[a][b-wt[a-1]],memozise[a-1][b]);
+               memozise[a][b] = memozise[a][b-wt[a-1]] + memozise[a-1][b];
                
                else
                memozise[a][b] = memozise[a-1][b];
            }
+       }
+      
+      for (int a = 0; a <= n; a++)
+       {
+           for (int b = 0; b <= W;b++)
+           {
+               cout << memozise[a][b];
+           }
+        cout << endl;
        }
        return memozise[n][W];
     }
   
   
     int change(int amount, vector<int>& coins) {
+      /*used in memozization
       vector<vector<int>> memozise(amount+1,vector<int>(coins.size()+1,-1));
-        return memozization_solution(amount,coins,coins.size()-1,memozise);
+      */
+      return top_down_solution(amount,coins,coins.size());
     }
 };
