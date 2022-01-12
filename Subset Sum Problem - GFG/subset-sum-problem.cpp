@@ -100,8 +100,6 @@ public:
              
            }
        }
-       
-       
        return memozise[n][W];
     }
     bool isSubsetSum(int N, int arr[], int sum){
