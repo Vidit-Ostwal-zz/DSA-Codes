@@ -57,8 +57,8 @@ public:
         }
     }
     
-    /*Top -Down Appraoch*/
-    /*Complexity Analysis: 
+    /*Top -Down Appraoch
+    Complexity Analysis: 
     Time Complexity: O(N*W).
     where ‘N’ is the number of weight element and ‘W’ is capacity. As for every weight element we traverse through all weight capacities 1<=w<=W.
     Auxiliary Space: O(N*W).
@@ -84,10 +84,11 @@ public:
        }
        return memozise[n][W];
     }
+    
     int knapSack(int N, int W, int val[], int wt[])
     {
-        
-        return top_down_solution(W,wt,val,N);
+        vector<vector<int>> memozise(W+1,vector<int>(N+1,-1));
+        return memozization_solution(W,wt,val,N-1,memozise);
     }
 };
 
