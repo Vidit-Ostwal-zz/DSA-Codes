@@ -64,7 +64,7 @@ class Solution{
     Auxiliary Space: O(N*W).
     The use of 2-D array of size ‘N*W’.
     Mostly both Memozization solution and top_down_solution will have same complexity.*/
-    int top_down_solution (int W, int wt[], int val[], int n)
+    int top_down_solution (int W, vector<int> wt, int val[], int n)
     {
         vector<vector<int>> memozise(n+1,vector<int>(W+1));
        
@@ -91,7 +91,8 @@ class Solution{
         weigth.push_back(i);
         
         vector<vector<int>> memozise(n+1,vector<int>(n+1,-1));
-        return memozization_solution(n,weigth,price,n-1,memozise);
+        
+        return top_down_solution(n,weigth,price,n);
     }
 };
 
