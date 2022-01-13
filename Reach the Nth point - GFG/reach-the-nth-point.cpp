@@ -67,10 +67,11 @@ class Solution{
     return answer;
   }
 		int nthPoint(int n){
-		    
+		    /*
 		    vector<int> dp(n+1,-1);
+		    */
 		   
-		    return memoization_solution(n,dp);
+		    return bottom_up_solution_space_optimized(n);
 		}
 };
 
