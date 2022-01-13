@@ -21,12 +21,12 @@ class Solution{
   {
     if (n <= 2)
       return n;
-    
+    int mod = pow(10,9)+7;
     if (dp[n] != -1)
     {
       return dp[n];
     }
-    return dp[n] = memoization_solution(n-1,dp)+ memoization_solution(n-2,dp);
+    return dp[n] = (memoization_solution(n-1,dp)%mod+ memoization_solution(n-2,dp)%mod)%mod;
   }
   
   /*Time Complexity = O(N)
@@ -67,10 +67,10 @@ class Solution{
     return answer;
   }
 		int nthPoint(int n){
-		    /*
+		    
 		    vector<int> dp(n+1,-1);
-		    */
-		    return bottom_up_solution(n);
+		   
+		    return memoization_solution(n,dp);
 		}
 };
 
