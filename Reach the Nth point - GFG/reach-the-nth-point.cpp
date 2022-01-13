@@ -70,7 +70,7 @@ class Solution{
 		    /*
 		    vector<int> dp(n+1,-1);
 		    */
-		    return bottom_up_solution_space_optimized(n);
+		    return bottom_up_solution(n);
 		}
 };
 
