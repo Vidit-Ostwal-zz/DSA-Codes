@@ -128,21 +128,23 @@ struct Node
 */
 
 //Function to return a list containing the preorder traversal of the tree.
-void POtraversal(Node *root, vector<int>&temp_vector)
+vector<int> POtraversal(Node *root)
 {
     if (root == NULL)
-    return;
+    return {};
     
+    vector<int> temp_vector;
     temp_vector.push_back(root-> data);
-    POtraversal(root -> left,temp_vector);
-    POtraversal(root -> right,temp_vector);
+    vector<int> temp1 = POtraversal(root -> left);
+    vector<int> temp2 = POtraversal(root -> right);
+    temp_vector.insert(temp_vector.end(),temp1.begin(),temp1.end());
+    temp_vector.insert(temp_vector.end(),temp2.begin(),temp2.end());
+    return temp_vector;
 }
 
 
 
 vector<int> preorder(Node* root)
 {
-    vector<int> temp_vector;
-    POtraversal(root,temp_vector);
-    return temp_vector;
+    return POtraversal(root);
 }
