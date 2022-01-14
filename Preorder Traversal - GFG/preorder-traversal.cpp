@@ -128,6 +128,12 @@ struct Node
 */
 
 //Function to return a list containing the preorder traversal of the tree.
+
+/*
+Space and Time Complexity = O(N)
+N is number of nodes 
+*/
+
 void POtraversal(Node *root, vector<int>&temp_vector)
 {
     if (root == NULL)
@@ -152,12 +158,35 @@ vector<int> POtraversal(Node *root)
     return temp_vector;
 }
 
-
+/*
+Space and Time Complexity = O(N)
+N is number of nodes 
+*/
+vector<int> iterative (Node* root)
+{
+    vector<int> final_answer;
+    stack<Node*> st;
+    
+    st.push(root);
+    
+    while (!st.empty())
+    {
+        root = st.top();
+        st.pop();
+        final_answer.push_back(root -> data);
+        if (root -> right != NULL)
+        st.push(root -> right);
+        
+        if (root -> left != NULL)
+        st.push(root -> left);
+    }
+    return final_answer;
+}
 
 vector<int> preorder(Node* root)
 {
     /*used in approach 1
     vector<int> temp_vector;
     */
-    return POtraversal(root);
+    return iterative(root);
 }
