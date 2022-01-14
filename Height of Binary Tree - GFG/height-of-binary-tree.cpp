@@ -110,12 +110,40 @@ struct Node
     return 1 + max(get_height(root -> left),get_height(root -> right));
   }
   
+  /*Level Order Search*/
+  /* Iterative approach 
+  N = number of nodes in binary tree
+  Time Complexity = O(N)
+  Space Complexity = O(1)
+  */
+  int level_order (Node* root)
+  {
+    queue<Node*> q;
+    q.push(root);
+    int count = 0;
+    while (!q.empty())
+    {
+      int size = q.size();
+      for (int i = 0; i < size ;i++)
+      {
+        Node* temp = q.front();
+        q.pop();
+        if (temp -> left != NULL)
+          q.push(temp -> left);
+        
+        if (temp -> right != NULL)
+          q.push(temp -> right);
+      }
+      count++;
+    }
+    return count;
+  }
   
 class Solution{
     public:
     //Function to find the height of a binary tree.
     int height(struct Node* node){
-        return get_height(node);
+        return level_order(node);
     }
 };
 
