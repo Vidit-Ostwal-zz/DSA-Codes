@@ -59,6 +59,6 @@ public:
       {
         return 0;
       }
-        return level_order(root);
+        return get_height(root);
     }
 };
