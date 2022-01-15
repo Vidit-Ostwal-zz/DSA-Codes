@@ -28,7 +28,7 @@ class Solution{
   
   /*
   Time Compleixty = O(2^N)
-  Sapce Complexity = O(N) Recursion Stack Space*/
+  Space Complexity = O(N) Recursion Stack Space*/
   int top_down_solution(string text1, string text2)
   {
     int result = 0;
