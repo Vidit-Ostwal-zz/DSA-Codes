@@ -39,7 +39,6 @@ public:
           }
         }
     }
-    cout << a << "  " << b << endl;
     while (a > 0)
     {
       answer += text1[a-1];
