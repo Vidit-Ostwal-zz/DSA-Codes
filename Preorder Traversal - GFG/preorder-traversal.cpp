@@ -126,67 +126,21 @@ struct Node
     }
 };
 */
-
-//Function to return a list containing the preorder traversal of the tree.
-
-/*
-Space and Time Complexity = O(N)
-N is number of nodes 
-*/
-
-void POtraversal(Node *root, vector<int>&temp_vector)
+void recursive_solution(Node *root, vector<int> &temp_vector)
 {
     if (root == NULL)
     return;
     
-    temp_vector.push_back(root-> data);
-    POtraversal(root -> left,temp_vector);
-    POtraversal(root -> right,temp_vector);
+    temp_vector.push_back(root -> data);
+    recursive_solution(root -> left,temp_vector);
+    recursive_solution(root -> right,temp_vector);
 }
 
-vector<int> POtraversal(Node *root)
+
+//Function to return a list containing the preorder traversal of the tree.
+vector <int> preorder(Node* root)
 {
-    if (root == NULL)
-    return {};
-    
     vector<int> temp_vector;
-    temp_vector.push_back(root-> data);
-    vector<int> temp1 = POtraversal(root -> left);
-    vector<int> temp2 = POtraversal(root -> right);
-    temp_vector.insert(temp_vector.end(),temp1.begin(),temp1.end());
-    temp_vector.insert(temp_vector.end(),temp2.begin(),temp2.end());
-    return temp_vector;
-}
-
-/*
-Space and Time Complexity = O(N)
-N is number of nodes 
-*/
-vector<int> iterative (Node* root)
-{
-    vector<int> final_answer;
-    stack<Node*> st;
-    
-    st.push(root);
-    
-    while (!st.empty())
-    {
-        root = st.top();
-        st.pop();
-        final_answer.push_back(root -> data);
-        if (root -> right != NULL)
-        st.push(root -> right);
-        
-        if (root -> left != NULL)
-        st.push(root -> left);
-    }
-    return final_answer;
-}
-
-vector<int> preorder(Node* root)
-{
-    /*used in approach 1
-    vector<int> temp_vector;
-    */
-    return iterative(root);
+    recursive_solution(root,temp_vector);
+    return temp_vector; 
 }
