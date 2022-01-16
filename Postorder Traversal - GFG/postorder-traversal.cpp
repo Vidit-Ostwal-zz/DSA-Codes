@@ -129,24 +129,31 @@ vector<int> iterative_solution (Node* root)
 {
     vector<int> temp_vector;
     stack<Node*> st;
-    
+    stack<Node*> st1;
     st.push(root);
     while (!st.empty())
     {
         root = st.top();
         st.pop();
-        
-        temp_vector.push_back( root ->data);
+        st1.push(root);
         /*
         left and right should not be null as it does not have any data and also it does not 
         point to anything.
         */
+        if (root -> left != NULL)
+        st.push(root -> left) ;
+        
         if (root -> right != NULL)
         st.push(root -> right);
         
-        if (root -> left != NULL)
-        st.push(root -> left) ;
+        
     }
+    while (!st1.empty())
+    {
+        temp_vector.push_back(st1.top() -> data);
+        st1.pop();
+    }
+    
     return temp_vector;
 }
 
@@ -169,5 +176,5 @@ vector <int> postOrder(Node* root)
 {
   vector<int> temp_vector;
   recursive_solution(root,temp_vector);
-  return temp_vector;
+  return iterative_solution(root);
 }
