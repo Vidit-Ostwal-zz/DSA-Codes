@@ -43,12 +43,38 @@ void recursive_solution(Node *root, vector<int> &temp_vector)
     temp_vector.push_back(root -> data);
     recursive_solution(root -> right,temp_vector);
 }
-  
+
+/*
+Time Complexity = O(N) N is number of nodes we will visit all the nodes
+Space Complexity = O(N) vector in which we are storing */
+vector<int> iterative_solution (Node* root)
+{
+    vector<int> temp_vector;
+    stack<Node*> st;
+    
+    while (root != NULL || !st.empty())
+    {
+        while (root != NULL)
+        {
+            st.push(root);
+            root = root -> left;
+        }
+        
+        root = st.top();
+        temp_vector.push_back( root ->data);
+        st.pop();
+        root = root -> right;
+    }
+    return temp_vector;
+}
+
+
     // Function to return a list containing the inorder traversal of the tree.
     vector<int> inOrder(Node* root) {
-        vector<int> temp_vector;
+        /*vector<int> temp_vector;
         recursive_solution(root,temp_vector);
-        return temp_vector;
+        */
+        return iterative_solution(root);
     }
 };
 
