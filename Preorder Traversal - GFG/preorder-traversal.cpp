@@ -126,6 +126,10 @@ struct Node
     }
 };
 */
+
+/*
+Time Complexity = O(N) N is number of nodes we will visit all the nodes
+Space Complexity = O(N) Recursion stack Space and vector in which we are storing */
 void recursive_solution(Node *root, vector<int> &temp_vector)
 {
     if (root == NULL)
@@ -136,11 +140,39 @@ void recursive_solution(Node *root, vector<int> &temp_vector)
     recursive_solution(root -> right,temp_vector);
 }
 
+/*
+Time Complexity = O(N) N is number of nodes we will visit all the nodes
+Space Complexity = O(N) vector in which we are storing */
+vector<int> iterative_solution (Node* root)
+{
+    vector<int> temp_vector;
+    stack<Node*> st;
+    
+    st.push(root);
+    while (!st.empty())
+    {
+        root = st.top();
+        st.pop();
+        
+        temp_vector.push_back( root ->data);
+        /*
+        left and right should not be null as it does not have any data and also it does not 
+        point to anything.
+        */
+        if (root -> right != NULL)
+        st.push(root -> right);
+        
+        if (root -> left != NULL)
+        st.push(root -> left) ;
+    }
+    return temp_vector;
+}
 
 //Function to return a list containing the preorder traversal of the tree.
 vector <int> preorder(Node* root)
 {
-    vector<int> temp_vector;
+    /*vector<int> temp_vector;
     recursive_solution(root,temp_vector);
-    return temp_vector; 
+    */
+    return iterative_solution(root); 
 }
