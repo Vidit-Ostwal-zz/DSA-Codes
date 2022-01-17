@@ -21,11 +21,36 @@ public:
     recursive_solution(root -> right,final_vector);
   }
   
+  vector<int> iterative_solution(TreeNode* root)
+  {
+    vector<int> final_vector;
+    if (root == NULL)
+      return final_vector;
+    
+    stack <TreeNode*> st;
+    st.push(root);
+    
+    while (!st.empty())
+    {
+      root = st.top();
+      st.pop();
+      final_vector.push_back(root -> val);
+      
+       if (root -> right != NULL)
+        st.push(root -> right);
+      
+      if (root -> left != NULL)
+        st.push(root -> left);
+      
+     
+    }
+    return final_vector;
+  }
   
   
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int> final_vector;
-      recursive_solution(root, final_vector);
-      return final_vector;
+        /*vector<int> final_vector;
+      recursive_solution(root, final_vector);*/
+      return iterative_solution(root);
     }
 };
