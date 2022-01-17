@@ -100,7 +100,11 @@ class Solution {
     if (root == NULL)
       return 0;
     
-    return 1 + max(get_height(root -> left),get_height(root -> right));
+    int left = get_height(root -> left);
+    int right = get_height(root -> right);
+    
+    answer =  max(answer,1+left+right);
+    return 1 + max(left,right);
   }
     
   void get_diameter (Node *root)
@@ -121,7 +125,7 @@ class Solution {
     
     int diameter(Node* root) {
         // Your code here
-        get_diameter (root);
+        get_height(root);
       return answer;
     }
 };
