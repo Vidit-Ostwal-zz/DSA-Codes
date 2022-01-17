@@ -18,10 +18,20 @@ public:
     if (root == NULL)
       return 0;
     
+    /*Get left and right sum*/
     int left = findmax(root -> left);
     int right = findmax(root -> right);
-    answer = max(max(root -> val,answer),max(root-> val +left+right, root-> val + max(left,right)));
-    return max(root -> val, root -> val + max(left,right));
+    
+    /*
+    1> Only till this root 
+    2> Either of the children
+    3> Answer including both children
+    */
+    
+    /*Returing thing max root coming from upward should stop at that node of if going forward should take at atmost one children*/
+    int max_single = max(root -> val, root -> val + max(left,right));
+    answer = max(answer,max(max_single,root->val + left + right));
+    return max_single;
   }
   
   
