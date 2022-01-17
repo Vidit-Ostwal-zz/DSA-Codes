@@ -13,6 +13,8 @@ class Solution {
 public:
   
   /*Updated height function to return height from a node if after that node tree is balance otherwise return -1;*/
+  /*Time Complexity = O(N)
+  Sapce Complexity = O(N) Recursion stack Space*/
   int get_height(TreeNode* root)
   {
     if (root == NULL)
