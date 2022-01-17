@@ -13,6 +13,8 @@ class Solution {
 public:
   int answer = INT_MIN;
   
+  /*
+  Time and Space Complexity = O(N)*/
   int get_height(TreeNode* root)
   {
     if (root == NULL)
