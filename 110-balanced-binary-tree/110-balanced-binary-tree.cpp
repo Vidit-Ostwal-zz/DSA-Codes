@@ -12,15 +12,24 @@
 class Solution {
 public:
   
+  /*Updated height function to return height from a node if after that node tree is balance otherwise return -1;*/
   int get_height(TreeNode* root)
   {
     if (root == NULL)
       return 0;
     
-    return 1 + max(get_height(root -> left),get_height(root -> right));
+    int left = get_height(root -> left);
+    int right = get_height(root -> right);
+    
+    if (left == -1 || right == -1)
+      return -1;
+    
+    if (abs (left - right) > 1)
+      return -1 ;
+    return 1 + max(left,right);
   }
   
-  bool  check(TreeNode* root)
+  /*bool  check(TreeNode* root)
   {
     if (root == NULL)
       return true;
@@ -33,10 +42,11 @@ public:
     
     return false;
   }
+  */
     bool isBalanced(TreeNode* root) {
         if (root == NULL)
           return true;
       
-      return check(root);
+      return (get_height(root) == -1) ? false : true;
     }
 };
