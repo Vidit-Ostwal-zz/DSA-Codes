@@ -18,10 +18,19 @@ public:
     if (root == NULL)
       return 0;
     
-    return 1 + max(get_height(root -> left),get_height(root -> right));
-  }
+    int left = get_height(root -> left);
+    int right = get_height(root -> right);
     
-  void get_diameter (TreeNode *root)
+    answer =  max(answer,left+right);
+    return 1 + max(left,right);
+  }
+  
+  /*
+  Time Complexity = O(N^2) Iteration on each nodes and then getting height from each one
+  Space Compleixty = O(N) Recursion Stack Space
+  not Acceptabe
+  */
+  /*void get_diameter (TreeNode *root)
   {
     if (root == NULL)
       return;
@@ -34,10 +43,11 @@ public:
     get_diameter(root ->left);
     get_diameter(root -> right);
   }
+  */
   
   
     int diameterOfBinaryTree(TreeNode* root) {
-        get_diameter (root);
+        get_height(root);
       return answer;
     }
 };
