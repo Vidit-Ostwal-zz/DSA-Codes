@@ -41,8 +41,6 @@ public:
       
       if (root -> left != NULL)
         st.push(root -> left);
-      
-     
     }
     return final_vector;
   }
