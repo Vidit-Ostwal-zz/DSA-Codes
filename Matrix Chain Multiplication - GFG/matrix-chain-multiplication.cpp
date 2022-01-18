@@ -8,46 +8,47 @@ using namespace std;
 // User function Template for C++
 
 class Solution{
-    /*Recursive Solution*/
-    int solve (int i, int j, int arr[])
+    /*Naive Solution Time Complexity is exponential*/
+    int solve(int arr[],int i, int j)
     {
-        if (i >= j)
-        return 0;
-        int answer = INT_MAX;
-        /*Breaking from i to k and k+1 to j*/
-        for (int k = i; k < j; k++)
-        {
-            answer = min(answer,solve(i,k,arr)+solve(k+1,j,arr)+arr[i-1]*arr[k]*arr[j]);
-        }
-        return answer;
-    }
-    
-    /*Memoization / Bottom Up Solution*/
-    int solve_memoization(int i, int j, int arr[],vector<vector<int>> &dp)
-    {
+        /*A single matrix is also a valid input 
+        The First case when one matrix is multiplied with the rest*/
+        /*i==j means that the input is of single matrix nothing can be donw on the single matrix*/
         if (i >= j)
         return 0;
         
-        if (dp[i][j] != -1)
-        {
-            return dp[i][j];
-        }
         int answer = INT_MAX;
-        /*Breaking from i to k and k+1 to j*/
-        for (int k = i; k < j; k++)
+        /*breaking from i to k and k+1 to j*/
+        for (int k = i;k < j ;k++)
         {
-            answer = min(answer,solve_memoization(i,k,arr,dp)+solve_memoization(k+1,j,arr,dp)+arr[i-1]*arr[k]*arr[j]);
+            answer = min(answer,solve(arr,i,k)+solve(arr,k+1,j)+arr[i-1]*arr[k]*arr[j]);
         }
-        dp[i][j] = answer;
         return answer;
     }
     
+    int solvememoized(int arr[],int i, int j,vector<vector<int>> &dp)
+    {
+        /*A single matrix is also a valid input 
+        The First case when one matrix is multiplied with the rest*/
+        /*i==j means that the input is of single matrix nothing can be donw on the single matrix*/
+        if (i >= j)
+        return 0;
+        
+        if (dp[i][j] != -1) return dp[i][j];
+        int answer = INT_MAX;
+        /*breaking from i to k and k+1 to j*/
+        for (int k = i;k < j ;k++)
+        {
+            answer = min(answer,solvememoized(arr,i,k,dp)+solvememoized(arr,k+1,j,dp)+arr[i-1]*arr[k]*arr[j]);
+        }
+        return dp[i][j] = answer;
+    }
 public:
     int matrixMultiplication(int N, int arr[])
     {
-        vector<vector<int>> dp(N+1,vector<int> (N+1,-1));
-        /*The index represent the right bracket number*/
-        return solve_memoization(1,N-1,arr,dp);
+        /*the matrix is index and index-1, so first thing is to think of write first valid input*/
+        vector<vector<int>> dp(N,vector<int>(N,-1));
+        return solvememoized(arr,1,N-1,dp);
     }
 };
 
