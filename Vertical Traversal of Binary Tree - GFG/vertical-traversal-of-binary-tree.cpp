@@ -110,6 +110,7 @@ class Solution
         if (root -> right != NULL) findminmax(root -> right,min,max,hd+1);
     }
     
+    /*Level order Traversal along with storage*/
     void getvertical(Node *root, unordered_map<int,vector<int>> &mp,int hd)
     {
         if (root == NULL) return ;
