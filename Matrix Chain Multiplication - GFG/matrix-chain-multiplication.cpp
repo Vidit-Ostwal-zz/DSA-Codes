@@ -26,6 +26,8 @@ class Solution{
         return answer;
     }
     
+    /*Auxilary Space = O(N^2)
+    Time Complexity = O(N^3)*/
     int solvememoized(int arr[],int i, int j,vector<vector<int>> &dp)
     {
         /*A single matrix is also a valid input 
