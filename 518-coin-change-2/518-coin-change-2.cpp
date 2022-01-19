@@ -71,6 +71,8 @@ public:
              
                else if (a == 0)
                memozise[a][b] = 0;
+             
+             
                
                else if (wt[a-1] <=  b)
                memozise[a][b] = memozise[a][b-wt[a-1]] + memozise[a-1][b];
