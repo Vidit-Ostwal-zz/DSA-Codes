@@ -120,10 +120,32 @@ class Solution {
     }
     return answer;
 }
+/*Root Left Right*/
+void preorder_traversal(Node *root, unordered_map<int,int>& mp,int level)
+{
+    if (root == NULL)
+    return;
+    
+    mp[level] += 1;
+    
+    preorder_traversal(root -> left,mp,level+1);
+    preorder_traversal(root -> right,mp,level+1);
+    
+}
   public:
     // Function to get the maximum width of a binary tree.
     int getMaxWidth(Node* root) {
-        return level_order1 (root);
+        unordered_map<int,int> mp;
+        preorder_traversal(root,mp,1);
+        int answer = INT_MIN;
+        int level = 1;
+        
+        while (mp.find(level)!= mp.end())
+        {
+            answer = (mp[level] > answer) ? mp[level] : answer;
+            level++;
+        }
+        return answer;
     }
 };
 
