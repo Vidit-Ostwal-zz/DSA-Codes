@@ -24,7 +24,6 @@ public:
       int count = 0;
         while(s.size() != 1)
         {
-          cout << s<< endl;
           if (s[s.length()-1] - '0' == 0)
           {
             s = s.substr(0,s.length()-1);
