@@ -25,7 +25,7 @@ public:
           }
         }
       }
-      cout << max;
+  
       return answer;
     }
 };
