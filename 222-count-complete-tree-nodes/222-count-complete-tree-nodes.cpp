@@ -19,10 +19,39 @@ class Solution {
     
     return 1 + left+right;
   }
+  
+  int via_property(TreeNode* root)
+  {
+    if (root == NULL)
+      return 0;
+    
+    int left = 0;
+    int right = 0 ;
+    
+    TreeNode* Lf = root;
+    while (Lf != NULL)
+    {
+      left++;
+      Lf = Lf -> left;
+    }
+    TreeNode* Rf = root;
+    while(Rf != NULL)
+    {
+      right++;
+      Rf = Rf -> right;
+    }
+    
+    if (left == right)
+    {
+      return pow(2,left) - 1;
+    }
+    return 1 + via_property(root-> left)+ via_property(root->right);
+    
+  }
 public:
     int countNodes(TreeNode* root) {
       if (root == NULL)
         return 0;
-        return preorder(root);
+        return via_property(root);
     }
 };
