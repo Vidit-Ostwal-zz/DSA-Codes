@@ -12,17 +12,18 @@
 class Solution {
   public:
   unordered_map<int,int> mp;
-  int i = 0;
-  TreeNode* make_tree(vector<int> preorder,vector<int> inorder, int s,int e)
+  
+  TreeNode* make_tree(vector<int> preorder,int ps, int pe,vector<int> inorder, int is,int ie)
   {
-    if (s>e)
+    if (ps > pe || is > ie)
       return NULL;
     
-    TreeNode* root = new TreeNode(preorder[i++]);
+    TreeNode* root = new TreeNode(preorder[ps]);
     int root_index = mp[root->val];
+    int length = root_index - is;
     
-    root->left = make_tree(preorder,inorder,s,root_index-1);
-    root-> right = make_tree(preorder,inorder,root_index+1,e);
+    root->left = make_tree(preorder,ps+1,ps+length,inorder,is,root_index-1);
+    root-> right = make_tree(preorder,ps+length+1,pe,inorder,root_index+1,ie);
     
     return root;
   }
@@ -36,7 +37,7 @@ class Solution {
         mp[inorder[i]] = i;
       }
       
-      TreeNode* root = make_tree(preorder,inorder,0,inorder.size()-1);
+      TreeNode* root = make_tree(preorder,0,inorder.size()-1,inorder,0,inorder.size()-1);
       
       return root;
     }
