@@ -55,17 +55,13 @@ class Solution {
     if (nums.size() == 1)
       return dp[0];
     dp[1] = (nums[1] == nums[0] + 1) ? max(dp[0],nums[1]*mp[nums[1]]) : dp[0] + nums[1]*mp[nums[1]];
-    
-    cout << dp[0] << endl;
-    cout << dp[1] << endl;
-    
+
     for (int i = 2; i < nums.size();i++)
     {
       bool flag = false;
       if (nums[i] != nums[i-1] + 1) flag = true;
       
       dp[i] = max(dp[i-1],nums[i]*mp[nums[i]] + ((flag) ? dp[i-1] : dp[i-2]));
-      cout << dp[i] << endl;
     }
     return dp[nums.size()-1];
   }
