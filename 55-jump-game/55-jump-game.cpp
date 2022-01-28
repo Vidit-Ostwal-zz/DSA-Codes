@@ -19,9 +19,31 @@ class Solution {
     }
     return dp[index] = flag;
   }
-    
+   
+  
+  bool top_down_solution(vector<int>& nums)
+  {
+    vector<bool> reach(nums.size(),false);
+    int i = 0;
+    reach[i] = true;
+
+    for (int k = 0; k < nums.size();k++)
+    {
+      if (reach[k])
+      {
+        int jump = nums[k]+k;
+        while (i <= jump && i < nums.size())
+        {
+          reach[i] = true;
+          i++;
+        }
+      }
+    }
+    return reach[reach.size()-1];
+  }
 public:
     bool canJump(vector<int>& nums) {
+      return top_down_solution(nums);
       vector<int> dp(nums.size(),-1);
         return recursion(nums,0,dp);
     }
