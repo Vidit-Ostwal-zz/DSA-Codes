@@ -29,8 +29,29 @@ class Solution {
     return dp[index] = flag;
   }
     
+    bool top_down_solution(int nums[],int N)
+  {
+    vector<bool> reach(N,false);
+    int i = 0;
+    reach[i] = true;
+
+    for (int k = 0; k < N;k++)
+    {
+      if (reach[k])
+      {
+        int jump = nums[k]+k;
+        while (i <= jump && i < N)
+        {
+          reach[i] = true;
+          i++;
+        }
+      }
+    }
+    return reach[reach.size()-1];
+  }
   public:
     int canReach(int A[], int N) {
+        return top_down_solution(A,N);
         vector<int> dp(N,-1);
         return recursion(A,0,dp,N);
     }
