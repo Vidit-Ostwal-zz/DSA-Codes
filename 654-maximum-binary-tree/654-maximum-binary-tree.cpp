@@ -22,7 +22,6 @@ class Solution {
         maxi_index = i;
       }
     }
-    
     return maxi_index;
   }
   
