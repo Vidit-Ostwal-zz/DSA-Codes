@@ -5,23 +5,18 @@ public:
       
       while (i < nums.size())
       {
-        if (nums[i] > 0)
+        if (nums[i] > 0 && nums[i] <= nums.size())
         {
           int correct_index = nums[i] - 1;
-        if (correct_index < nums.size() && nums[i] > 0 && nums[i] != nums[correct_index])
-        {
-          swap(nums[i],nums[correct_index]);
-        }
-        else
-        {
-          i++;
-        }
-        }
-        else
-        {
-          i++;
+          if (nums[i] != nums[correct_index])
+            swap(nums[i],nums[correct_index]);
+          
+          else
+            i++;
         }
         
+        else
+          i++;        
       }
       
       for (int i = 0; i < nums.size(); i++)
