@@ -14,14 +14,23 @@ public:
   
   
     int missingNumber(vector<int>& nums) {
-        for (int i = 0; i < nums.size(); i++)
+      int i = 0;
+      while (i < nums.size())
+      {
+        /*correct_index is the right index for this value*/
+        int correct_index = nums[i];
+        /*if it's present over the right index then increase i otherwise swap*/
+        if (nums[i] < nums.size() && nums[i] != nums[correct_index])
         {
-          while (nums[i] != i && nums[i] != nums.size())
-          {
-            swap(nums[i],nums[nums[i]]);
-          }
+          swap(nums[i],nums[correct_index]);
         }
-      int i = 0 ;
+        else
+        {
+          i++;
+        }
+      }
+      
+      i = 0;
       for (; i < nums.size(); i++)
       {
         if (i != nums[i])
