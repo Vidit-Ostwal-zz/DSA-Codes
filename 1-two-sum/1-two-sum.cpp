@@ -2,7 +2,7 @@ class Solution {
 public:
   /*Two Pointer Approach
   Hash Map cannot be used because we map same values twice either use a vector of hash map
-  But that will be too much compolicated
+  But that will be too much complicated
   We need another thing in which these two things are paired up in some manner*/
     vector<int> twoSum(vector<int>& nums, int target) {
         vector<pair<int,int>> v;
