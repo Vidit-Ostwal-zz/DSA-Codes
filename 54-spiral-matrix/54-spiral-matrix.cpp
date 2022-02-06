@@ -5,12 +5,7 @@ class Solution {
     
     if (start_row > end_row || start_col > end_col)
       return {};
-    
-    cout << start_row;
-    cout << end_row ;
-    cout << start_col ;
-    cout << end_col << endl;
-    
+ 
     vector<int> final_vector;
     int i = start_col;
     while (i <= end_col)
@@ -36,7 +31,6 @@ class Solution {
       final_vector.push_back(matrix[l][start_col]);
       l--;
     }
-    cout << final_vector.size() << endl;
     
     vector<int> temp_vector = spiral(matrix,start_row+1, end_row -1, start_col +1, end_col -1);
     final_vector.insert(final_vector.end(),temp_vector.begin(),temp_vector.end());
