@@ -40,7 +40,7 @@ public:
       }
         
     }
-      for (int j = 0; j < matrix[0].size();j++)
+    for (int j = 0; j < matrix[0].size();j++)
           answer = min(answer,matrix[matrix.size()-1][j]);
     return answer;
     }
