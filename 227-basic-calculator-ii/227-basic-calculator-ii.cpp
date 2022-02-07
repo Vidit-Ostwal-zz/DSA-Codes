@@ -1,13 +1,14 @@
 class Solution {
   
+  /*returns a string of given character*/
   string getString(char x)
   {
     string s = "";
     s += x;
     return s;
   }
-  
-  
+
+  /*Returns the prioritty of an given operator*/
   int prio(char c)
     {
         if (c == '^')
@@ -22,6 +23,7 @@ class Solution {
         return -1;
     }
   
+  /*Does a infix to postfix work of the stirngs*/
   vector<string> infixToPostfix(string s)
     {
         stack<char> st;
@@ -30,18 +32,15 @@ class Solution {
         for (int i = 0; i < s.length();i++)
         {
             char c= s[i];
-    
           if (c != ' ')
           {
             if (c >= '0' && c <= '9')
             {
               if (i > 0 && s[i-1] >= '0' && s[i-1] <= '9')
                 answer[answer.size()-1] += getString(c);
-              
               else
                 answer.push_back(getString(c));
             }
-            
             else
             {
                 while (!st.empty() && prio(st.top()) >= prio(c))
@@ -62,6 +61,7 @@ class Solution {
         return answer;
     }
   
+  /*calculate the value of a postfix operand*/
  int evalRPN(vector<string>& tokens) {
       int answer = 0;
       stack<string> st;
