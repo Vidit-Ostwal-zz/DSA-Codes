@@ -1,15 +1,20 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        sort(s.begin(),s.end());
-      sort(t.begin(),t.end());
+      unordered_map<char,int> mp;
       
-      int i = 0;
-      for (; i < s.length(); i++)
+      for (int i =0; i < s.length(); i++)
       {
-        if (s[i] != t[i])
-          return t[i];
+        mp[s[i]]++;
+        mp[t[i]]--;
       }
-      return t[i];
+      mp[t[t.length()-1]]--;
+      
+      for (auto i : mp)
+      {
+        if (i.second == -1)
+          return i.first;
+      }
+      return '0';
     }
 };
