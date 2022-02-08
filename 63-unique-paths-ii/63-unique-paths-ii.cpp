@@ -2,7 +2,6 @@ class Solution {
 public:
   int number_of_path_tabu(int m, int n,vector<vector<int>>& obstacleGrid)
   {
-    
       vector<vector<int>> dp (m+1,vector<int>(n+1,-1));
       
     for (int i = 0; i <= m; i++)
