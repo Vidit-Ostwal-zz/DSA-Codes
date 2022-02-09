@@ -20,10 +20,8 @@ public:
           else
             dp[i][j] = matrix[i][j]-'0' + min(dp[i-1][j],min(dp[i-1][j-1],dp[i][j-1]));
           
-          cout << dp[i][j] << "   " ;
           answer = max(answer,dp[i][j]);
         } 
-        cout << endl;
       }
       return answer*answer;
     }
