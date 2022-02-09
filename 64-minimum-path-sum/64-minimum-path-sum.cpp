@@ -21,8 +21,6 @@ public:
           }
           dp[i][j] = grid[i][j]+ temp;
         }
-         
-        
         else
           dp[i][j] = grid[i][j] + min(dp[(i-1)][j],dp[i][j-1]);
       }
