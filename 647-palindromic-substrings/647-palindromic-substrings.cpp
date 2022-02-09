@@ -18,9 +18,7 @@ public:
         for (int j = length-1; j >=i; j--)
         {
           if (i == j)
-          {
             dp[i][j] = true;
-          }
             
           else if (j - i == 1)
           {
@@ -29,9 +27,7 @@ public:
           }
           
           else if (dp[i+1][j-1] && (s[i] == s[j]))
-          {
             dp[i][j] = true;
-          }
           
           else
           {}
