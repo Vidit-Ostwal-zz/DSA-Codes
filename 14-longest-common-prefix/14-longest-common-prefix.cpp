@@ -9,8 +9,7 @@ public:
       int mat = INT_MAX;
       for (int i = 0; i < strs.size(); i++)
       {
-        string temp = strs[i];
-        int le = temp.length();
+        int le = strs[i].length();
         mat = min(le,mat);
       }
         
