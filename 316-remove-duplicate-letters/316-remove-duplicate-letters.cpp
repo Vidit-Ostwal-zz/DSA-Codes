@@ -22,7 +22,6 @@ public:
           
           res += s[i];
           visited[s[i]- 'a'] = true;
-          cout << res << endl;
         }
       }
       return res;
