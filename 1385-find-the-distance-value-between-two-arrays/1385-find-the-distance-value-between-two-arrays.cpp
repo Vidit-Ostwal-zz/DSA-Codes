@@ -37,7 +37,7 @@ public:
         /* a is smaller and b is bigger */
         int small = Binary_Search(arr2,a,true);
         int bigger = Binary_Search(arr2,b,false);
-        cout << a << b << small << bigger << endl;
+        
         if (bigger - small >= 0)
           count++;
       }
