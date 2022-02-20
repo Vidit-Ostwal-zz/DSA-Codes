@@ -24,7 +24,6 @@ public:
       for (int i = 0; i < grid.size(); i++)
       {
         int temp = Binary_Search(grid[i],0,grid[i].size()-1);
-        cout << temp << endl;
         if (temp != -1)
           answer += grid[i].size() - temp;
       }
