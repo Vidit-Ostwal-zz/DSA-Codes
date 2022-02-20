@@ -18,12 +18,8 @@ public:
           i++;
         }
         vector <int> temp{x1,x2};
-        final_vector.push_back(temp);
-        
+        final_vector.push_back(temp); 
       }
-      
-      /*vector <int> temp{x1,x2};
-      final_vector.push_back(temp);*/
       
       return final_vector;
     }
