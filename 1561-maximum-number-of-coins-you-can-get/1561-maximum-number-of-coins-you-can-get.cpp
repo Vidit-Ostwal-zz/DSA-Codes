@@ -10,9 +10,8 @@ public:
       while (st <= ed)
       {
         ans += piles[ed];
-        ed--;
-        ed--;
-        st++;
+        ed =  ed -2;
+        st = st + 1;
       }
       return ans;
     }
