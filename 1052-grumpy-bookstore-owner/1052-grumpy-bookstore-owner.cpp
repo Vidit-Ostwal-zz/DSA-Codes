@@ -22,7 +22,6 @@ public:
       while (ed < customers.size())
       {
         ansi = max(ansi,max_answer-temp1+temp);
-        cout << ansi << "   " ;
         temp -= customers[st];
         if (grumpy[st] == 0) temp1 -= customers[st];
         ed++;
