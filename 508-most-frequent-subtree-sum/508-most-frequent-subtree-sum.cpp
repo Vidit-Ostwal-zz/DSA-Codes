@@ -31,7 +31,6 @@ public:
       
        get_subtree_sum (root);
       auto it = mp.begin();
-      cout << "Here" << endl;
       
       int maxi = INT_MIN;
       while (it != mp.end())
@@ -39,7 +38,6 @@ public:
         maxi = max(maxi,it ->second);
         it++;
       }
-      cout << "Here" << endl;
       vector<int> answer;
       
       auto it1 = mp.begin();
