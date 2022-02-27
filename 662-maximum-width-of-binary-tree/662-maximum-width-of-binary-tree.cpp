@@ -11,6 +11,8 @@
  */
 class Solution {
   /*Indexing of each node has been done and stored in Hash Maps*/
+  /*Even a BFS Traversal with a Index Count will work no need to pratically store each and every index
+  Can be done without using any hash maps or recursion*/
   void preorder_traversal(TreeNode *root, unordered_map<int,vector<long long >>& mp ,int level, int pre_index,bool flag)
 {
   if (root == NULL)
