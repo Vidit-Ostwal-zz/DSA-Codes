@@ -22,10 +22,28 @@ class Solution {
       i++;  
     }
     return answer;
-    
   }
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {
-        return kadane_algorithm(nums);
+        /*return kadane_algorithm(nums);*/
+      
+      /*Sliding Window Approach*/
+      int i = 0;
+      int sum = 0;
+      int answer = 0;
+      while (i < nums.size())
+      {
+        if (nums[i] == 0)
+        {
+          answer = max(answer,sum);
+          sum = 0;
+        }
+        else
+          sum++;
+        
+        i++;
+      }
+      answer = max(answer,sum);
+      return answer;
     }
 };
