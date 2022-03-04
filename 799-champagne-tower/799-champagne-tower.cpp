@@ -11,13 +11,11 @@ public:
           if (j == 0)
           {
             temp_vector[i][j] = max(double(0),(temp_vector[i-1][j] - 1)/ double(2));
-            cout << (temp_vector[i-1][j] - 1)/ double(2) << endl;
           }
           
           else if (j == i)
           {
             temp_vector[i][j] = max(double(0),(temp_vector[i-1][j-1] - 1)/double(2));
-            cout << (temp_vector[i-1][j-1] - 1)/double(2) << endl;
           }
           
           else
