@@ -9,20 +9,15 @@ public:
         for (int j = 0; j <= i;j++)
         {
           if (j == 0)
-          {
             temp_vector[i][j] = max(double(0),(temp_vector[i-1][j] - 1)/ double(2));
-          }
           
           else if (j == i)
-          {
             temp_vector[i][j] = max(double(0),(temp_vector[i-1][j-1] - 1)/double(2));
-          }
           
           else
             temp_vector[i][j] = max(double(0),(temp_vector[i-1][j] - 1)/ double(2)) + max(double(0),(temp_vector[i-1][j-1] - 1)/double(2));
         }
         i++;
-        cout << endl;
       }
       return min(double(1),temp_vector[query_row][query_glass]);
     }
