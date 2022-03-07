@@ -1,35 +1,42 @@
 class Solution {
-  void swap(int&A,int&B)
-  {
-    int temp = A;
-    A = B;
-    B = temp;
-  }
   
-  /*O(N^2) and O(1)*/
-  vector<int> bubble_sort(vector<int> nums)
+  /*The pivot element will be at the right place in the first place*/
+  /*In merge Sort even if the vector is sorted it will go till very end, in this
+  it will not*/
+  void quick_sort(vector<int>& nums, int st, int ed)
   {
-    for (int i = 0; i < nums.size()-1; i++)
+    if (st >= ed)
+      return;
+    
+    int s = st;
+    int e = ed;
+    int m = (s + e) / 2;
+    int pivot = nums[m];
+    
+    while (s <= e)
     {
-      bool flag = true;
-      for (int j =1; j < nums.size()-i; j++)
+      while(nums[s] < pivot)
+        s++;
+      
+      while (nums[e] > pivot)
+        e--;
+      
+      if (s <= e)
       {
-        if (nums[j] < nums[j-1])
-        {
-            swap(nums[j],nums[j-1]);
-          flag = false;
-        }
+        int temp = nums[s];
+        nums[s] = nums[e];
+        nums[e] = temp;
+        s++;
+        e--;
       }
-      if (flag)
-        return nums;
     }
-    return nums;
+    quick_sort(nums,st,e);
+    quick_sort(nums,s,ed);
   }
   
 public:
     vector<int> sortArray(vector<int>& nums) {
-      sort(nums.begin(),nums.end());
+        quick_sort(nums,0,nums.size()-1);
       return nums;
-        return bubble_sort(nums);
     }
 };
