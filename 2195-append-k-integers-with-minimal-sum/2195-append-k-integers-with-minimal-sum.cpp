@@ -21,6 +21,7 @@ public:
     long long minimalKSum(vector<int>& nums, int k) {
       set<int> st(nums.begin(),nums.end());
       nums = vector<int>(st.begin(),st.end());
+      
       sort(nums.begin(),nums.end());
       for (int i =0; i < nums.size(); i++)
         cout << nums[i] << " " ;
