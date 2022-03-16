@@ -4,6 +4,10 @@ using namespace std;
 
  // } Driver Code Ends
 class Solution {
+    /*Time Complexity = O(N (visited Array Loop overall) + E (edges looping overall through queue))
+    Space Complexity = visited Array + queue = O(N) + O(N)
+    N is number of nodes
+    E is number of edges */
   public:
     // Function to return Breadth First Traversal of given graph.
     vector<int> bfsOfGraph(int V, vector<int> adj[]) {
