@@ -4,7 +4,9 @@ using namespace std;
 
  // } Driver Code Ends
 class Solution {
-    /**/
+    /*Time Complexity = O(N) Number of Nodes + O(E) number of Edges in adjancy List
+    Space Complexity = O(N) + O(N) Queue and O(N) Color Array*/
+    
     bool BFS (int V, vector<int> adj[])
     {
         /*This will be used as a visited Array*/
@@ -53,9 +55,53 @@ class Solution {
         return true;
     }
     
+    bool DFS_traversal(int index, vector<int> adj[], vector<int>& color, int flag)
+    {
+        color[index] = flag;
+        
+        flag = (flag) ? 0 : 1;
+        
+        for (int i = 0; i < adj[index].size(); i++)
+        {
+            if (color[adj[index][i]] == -1)
+            {
+                if (!DFS_traversal(adj[index][i],adj,color,flag))
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (color[adj[index][i]] != flag)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    
+    bool DFS (int V, vector<int> adj[])
+    {
+        vector<int> color(V,-1);
+        for (int i = 0; i < color.size(); i++)
+        {
+            if (color[i] == -1)
+            {
+                /*Disconnected Graph Call No effect of flag function*/
+                if (!DFS_traversal(i,adj,color,0))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 public:
 	bool isBipartite(int V, vector<int>adj[]){
-	    return BFS(V,adj);
+	    /*return B(FS(V,adj);*/
+	    return DFS(V,adj);
 	}
 
 };
