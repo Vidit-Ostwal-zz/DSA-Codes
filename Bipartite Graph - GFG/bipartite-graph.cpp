@@ -55,6 +55,9 @@ class Solution {
         return true;
     }
     
+     /*Time Complexity = O(N) Number of Nodes + O(E) number of Edges in adjancy List
+    Space Complexity = O(N) + O(N) Queue and O(N) Color Array*/
+    
     bool DFS_traversal(int index, vector<int> adj[], vector<int>& color, int flag)
     {
         color[index] = flag;
