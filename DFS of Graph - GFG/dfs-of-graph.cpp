@@ -5,7 +5,8 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
     
-    
+    /* Time Compplexity = O(N) + O(E)
+    Space Complexity = O(N) + O(N)*/
     vector<int> final_vector;
     
     void dfs(int i, vector<bool>& visited_vector, vector<int> adj[])
