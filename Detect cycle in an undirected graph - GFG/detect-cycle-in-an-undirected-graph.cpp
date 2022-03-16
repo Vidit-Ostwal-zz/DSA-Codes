@@ -4,6 +4,15 @@ using namespace std;
 
  // } Driver Code Ends
 class Solution {
+    /*In Bfs Modified when we iterate in adjaceny list and if we visited a already visited 
+    Node, then why is it visted, if its from the path, we came from then no problem, but if it is visited 
+    from another path, then there is a cycle
+    That's why a check with the prev
+    
+    Traversal BFS
+    Time Complexity = O(N) visited array loop + O(E) loop over all the adjancey matrix edges 
+    Space Complexity = O(N) visited bool array and O(N) queue
+    */
     bool bfs_modi(int i, vector<int> adj[],vector<bool>&vis)
     {
         queue<pair<int,int>> qt;
