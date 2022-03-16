@@ -58,7 +58,6 @@ class Solution {
     bool DFS_traversal(int index, vector<int> adj[], vector<int>& color, int flag)
     {
         color[index] = flag;
-        
         flag = (flag) ? 0 : 1;
         
         for (int i = 0; i < adj[index].size(); i++)
