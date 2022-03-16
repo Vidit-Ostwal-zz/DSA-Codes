@@ -41,6 +41,27 @@ class Solution {
         }
         return false;
     }
+    
+    bool dfs_modi(int i, vector<int> adj[],vector<bool>& vis, int prev)
+    {
+        vis[i] = false;
+        bool flag = false;
+        for (int j = 0; j < adj[i].size(); j++)
+        {
+            if (vis[adj[i][j]])
+            {
+                flag = flag || dfs_modi(adj[i][j],adj,vis,i);
+            }
+            else
+            {
+                if (adj[i][j] != prev)
+                {
+                    return true;
+                }
+            }
+        }
+        return flag;
+    }
   public:
     // Function to detect cycle in an undirected graph.
     bool isCycle(int V, vector<int> adj[]) {
@@ -50,7 +71,7 @@ class Solution {
         {
             if (vis[i])
             {
-                if (bfs_modi(i,adj,vis))
+                if (dfs_modi(i,adj,vis,-1))
                 {
                     return true;
                 }
