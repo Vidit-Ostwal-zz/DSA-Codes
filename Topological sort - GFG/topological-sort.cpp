@@ -5,10 +5,11 @@ using namespace std;
  // } Driver Code Ends
 class Solution
 {
-	public:
-	/*Depth First Search Algorithm*/
+    /*Depth First Search Algorithm*/
 	/*Time Complexity = O(N) + O(E)
 	Space Complexity = O(N) */
+	
+	
 	void DFS(vector<int> adj[], int index, vector<bool>& vis, stack<int> & st)
 	{
 	    vis[index] = false;
@@ -22,9 +23,35 @@ class Solution
 	    }
 	    st.push(index);
 	}
+	
+	
+	
+	vector<int> BFS(vector<int> adj[], vector<int> count_id, queue<int> &q)
+	{
+	    cout << "I am Here" << endl;
+	    vector<int> answer;
+	    while (!q.empty())
+	    {
+	        int index = q.front();
+	        answer.push_back(index);
+	        
+	        for (int i = 0; i < adj[index].size(); i++)
+	        {
+	            count_id[adj[index][i]]--;
+	            if (count_id[adj[index][i]] == 0)
+	            {
+	                q.push(adj[index][i]);
+	            }
+	        }
+	    }
+	    return answer;
+	}
+	
+	
+	public:
 	//Function to return list containing vertices in Topological order. 
 	vector<int> topoSort(int V, vector<int> adj[]) 
-	{
+		{
 	    vector<bool> vis(V,true);
 	    stack<int> st;
 	    
@@ -42,6 +69,28 @@ class Solution
 	        st.pop();
 	    }
 	    return answer;
+	    
+	       cout << "I am Here" << endl;
+	    vector<int> count_id(V,0);
+	    for (int i = 0; i < V; i++)
+	    {
+	        for (int j = 0; j < adj[i].size(); j++)
+	        {
+	            count_id[adj[i][j]]++;
+	        }
+	    }
+	       cout << "I am Here" << endl;
+	    queue<int> q;
+	    for (int i = 0; i < count_id.size(); i++)
+	    {
+	        if (!count_id[i])
+	        {
+	            q.push(i);
+	        }
+	    }
+	   
+	   return BFS(adj,count_id,q);
+	    
 	}
 };
 
