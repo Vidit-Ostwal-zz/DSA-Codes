@@ -6,7 +6,9 @@ using namespace std;
 class Solution
 {
 	public:
-	/*Time Comple*/
+	/*Depth First Search Algorithm*/
+	/*Time Complexity = O(N) + O(E)
+	Space Complexity = O(N) */
 	void DFS(vector<int> adj[], int index, vector<bool>& vis, stack<int> & st)
 	{
 	    vis[index] = false;
