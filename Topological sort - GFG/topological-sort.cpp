@@ -28,11 +28,11 @@ class Solution
 	
 	vector<int> BFS(vector<int> adj[], vector<int> count_id, queue<int> &q)
 	{
-	    cout << "I am Here" << endl;
 	    vector<int> answer;
 	    while (!q.empty())
 	    {
 	        int index = q.front();
+	        q.pop();
 	        answer.push_back(index);
 	        
 	        for (int i = 0; i < adj[index].size(); i++)
@@ -52,7 +52,7 @@ class Solution
 	//Function to return list containing vertices in Topological order. 
 	vector<int> topoSort(int V, vector<int> adj[]) 
 		{
-	    vector<bool> vis(V,true);
+	    /*vector<bool> vis(V,true);
 	    stack<int> st;
 	    
 	    for (int i = 0; i < V; i++)
@@ -68,9 +68,8 @@ class Solution
 	        answer.push_back(st.top());
 	        st.pop();
 	    }
-	    return answer;
+	    return answer;*/
 	    
-	       cout << "I am Here" << endl;
 	    vector<int> count_id(V,0);
 	    for (int i = 0; i < V; i++)
 	    {
@@ -79,7 +78,7 @@ class Solution
 	            count_id[adj[i][j]]++;
 	        }
 	    }
-	       cout << "I am Here" << endl;
+	    
 	    queue<int> q;
 	    for (int i = 0; i < count_id.size(); i++)
 	    {
