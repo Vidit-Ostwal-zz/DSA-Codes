@@ -61,12 +61,8 @@ public:
       
       if (k == 1 && m == 1)
       {
-        int mini = INT_MAX;
-        for (int i = 0; i < bloomday.size(); i++)
-          mini = min(mini,bloomday[i]);
-        
-        return mini;
-        
+        sort(bloomday.begin(),bloomday.end());
+        return bloomday[m-1];
       }
         for (int i = 0; i < bloomday.size(); i++)
           maxi = max(bloomday[i],maxi);
