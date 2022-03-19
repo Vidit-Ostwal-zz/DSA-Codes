@@ -59,7 +59,7 @@ public:
     int minDays(vector<int>& bloomday, int m, int k) {
       int maxi = INT_MIN;
       
-      if (k == 1 && m == 1)
+      if (k == 1)
       {
         sort(bloomday.begin(),bloomday.end());
         return bloomday[m-1];
