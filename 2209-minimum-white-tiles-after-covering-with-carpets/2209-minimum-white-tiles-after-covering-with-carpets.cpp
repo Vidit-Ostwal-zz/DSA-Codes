@@ -49,8 +49,6 @@ class Solution {
           
         else 
           dp[i][j] = min(dp[i][j-1] + floor[j] - '0',(j-len >= 0) ? dp[i-1][j-len] : 0);
-        
-       
       }
      
     }
