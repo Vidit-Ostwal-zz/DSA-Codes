@@ -18,7 +18,6 @@ class Solution {
           flag = false;
           break;
         }
-        
         if (tops[j] != temp[i] && bottoms[j] == temp[i])
           count++;
       }
