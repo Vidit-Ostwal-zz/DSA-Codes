@@ -4,99 +4,49 @@ using namespace std;
 
 
  // } Driver Code Ends
-
 class Solution
 {
-    int count = 0;
+    vector<vector<int>> dp;
     public:
-    /*Time Complexity = O(2^N) Recursive Tree
-    Sapce Comlplexity = O(N) Height of recursion tree*/
-    int recursive_solution (int left_weigth, int wt[], int val[], int index)
+    /*int Recursive_approach(int W, int wt[], int val[], int n, int index, int profit)
     {
-        /*Base Condiditon*/
-        if (index <0)
-        return 0;
-        
-        /*Case when current weight is higher*/
-        if (wt[index] > left_weigth)
-        return recursive_solution(left_weigth,wt,val,index-1);
-        
-        else
+        if (W == 0 || index >= n)
         {
-            return max(val[index]+recursive_solution(left_weigth - wt[index],wt,val,index-1),
-            recursive_solution(left_weigth,wt,val,index-1));
-        }
-    }
-    
-    /*Complexity Analysis: 
-    Time Complexity: O(N*W).
-    where ‘N’ is the number of weight element and ‘W’ is capacity. As for every weight element we traverse through all weight capacities 1<=w<=W.
-    Auxiliary Space: O(N*W).
-    The use of 2-D array of size ‘N*W’.*/
-    int memozization_solution (int left_weigth, int wt[], int val[], int index,vector<vector<int>> &memozise)
-    {
-        
-        /*Base Condiditon*/
-        if (index <0)
-        return 0;
-        
-        /*Solution might be already calculated*/
-        if (memozise[left_weigth][index] != -1)
-        {
-            return memozise[left_weigth][index];
+            return profit;
         }
         
-        /*Case when current weight is higher*/
-        if (wt[index] > left_weigth)
-        return memozise[left_weigth][index] = memozization_solution(left_weigth,wt,val,index-1,memozise);
-        
-        else
+        if (wt[index] <= W)
         {
-            return memozise[left_weigth][index] = max(val[index]+memozization_solution(left_weigth - wt[index],wt,val,index-1,memozise),
-            memozization_solution(left_weigth,wt,val,index-1,memozise));
+            return max(Recursive_approach(W,wt,val,n,index+1,profit),Recursive_approach(W-wt[index],wt,val,n,index+1,profit + val[index]));
         }
+        return Recursive_approach(W,wt,val,n,index+1,profit);
     }
+    */
     
-    
-    /*Top -Down Appraoch*/
-    /*Complexity Analysis: 
-    Time Complexity: O(N*W).
-    where ‘N’ is the number of weight element and ‘W’ is capacity. As for every weight element we traverse through all weight capacities 1<=w<=W.
-    Auxiliary Space: O(N*W).
-    The use of 2-D array of size ‘N*W’.
-    Mostly both Memozization solution and top_down_solution will have same complexity.*/
-    int top_down_solution (int W, int wt[], int val[], int n)
+    int Recu_memo(int W, int wt[], int val[], int n, int index)
     {
-        vector<vector<int>> memozise(n+1,vector<int>(W+1));
-       
-       for (int a = 0; a <= n; a++)
-       {
-           for (int b = 0; b <= W;b++)
-           {
-               if (a == 0 || b == 0)
-               memozise[a][b] = 0;
-               
-               else if (wt[a-1] <=  b)
-               memozise[a][b] = max(val[a-1] + memozise[a-1][b-wt[a-1]],memozise[a-1][b]);
-               
-               else
-               memozise[a][b] = memozise[a-1][b];
-           }
-       }
-       return memozise[n][W];
+        if (W == 0 || index >= n)
+        {
+            return 0;
+        }
+        
+        if (dp[index][W] != -1)
+        {
+            return dp[index][W];
+        }
+        
+        if (wt[index] <= W)
+        {
+            return dp[index][W] = max(Recu_memo(W,wt,val,n,index+1),val[index]+ Recu_memo(W-wt[index],wt,val,n,index+1));
+        }
+        return dp[index][W] = Recu_memo(W,wt,val,n,index+1);
     }
-    
     //Function to return max value that can be put in knapsack of capacity W.
     int knapSack(int W, int wt[], int val[], int n) 
-    { /* used in memozisation solution
-       vector<vector<int>> memozise;
-       vector<int> temp(n+1,-1);
-       for (int i = 0; i <= W; i++)
-       {
-           memozise.push_back(temp);
-       }
-       */
-       return top_down_solution(W,wt,val,n);
+    { 
+        dp = vector<vector<int>> (n+1,vector<int>(W+1,-1));
+       /*return Recursive_approach(W,wt,val,n,0,0);*/
+       return Recu_memo(W,wt,val,n,0);
     }
 };
 
