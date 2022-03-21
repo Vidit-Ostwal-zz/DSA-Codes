@@ -8,7 +8,7 @@ class Solution
 {
     vector<vector<int>> dp;
     public:
-    /*int Recursive_approach(int W, int wt[], int val[], int n, int index, int profit)
+    int Recursive_approach(int W, int wt[], int val[], int n, int index, int profit)
     {
         if (W == 0 || index >= n)
         {
@@ -21,7 +21,7 @@ class Solution
         }
         return Recursive_approach(W,wt,val,n,index+1,profit);
     }
-    */
+    
     
     int Recu_memo(int W, int wt[], int val[], int n, int index)
     {
