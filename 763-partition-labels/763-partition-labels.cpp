@@ -1,6 +1,10 @@
 class Solution {
   /*At most in one part, what more important, the last occuring index of the same 
 This is a string always you can use a 26 size vector*/
+  
+  
+  
+  /*Make a frequency map, keep reducing it, and keep a map of iterated element whose frequency is not yet zero, while at last while comparing one should check whether map size is zero or not */
   vector<int> Approach2(string s)
   {
     map<char,int>mp;
@@ -38,8 +42,8 @@ public:
     vector<int> partitionLabels(string s) {
       /*We got Alpha which have the last occuring indexes of all*/ 
       
-      return Approach2( s);
-      vector<int> alpha(26,0);
+      /*return Approach2( s);
+      */vector<int> alpha(26,0);
       
       for (int i =0; i < s.length(); i++)
         alpha[s[i] - 'a'] = i;
