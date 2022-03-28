@@ -42,6 +42,8 @@ class Solution {
     return top[n];
   }
   
+  /*Time Complexity = O(N)
+  Space Complexity = O(1)*/
   int top_down_space(int n)
   {
     if (n < 2)
