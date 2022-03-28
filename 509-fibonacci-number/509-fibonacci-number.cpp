@@ -1,71 +1,67 @@
 class Solution {
-public:
+  /*Time Complexity=  O(2^N)
+  Space Complexity = O(N)*/
+//   int via_recursion(int n)
+//   {
+//     if (n <= 1)
+//       return n;
+    
+//     return via_recursion(n-1) + via_recursion(n-2);
+//   }
   
-  /*Time Complexity = O(2^N)
-  Space Complexity = O(N) Height of recursion*/
-  int recursive_solution(int n)
+  vector<int> memo;
+  /*Time Compleixty = O(N)
+  Space Compexity = O(N)*/
+//   int via_memoization (int n)
+//   {
+//     cout << n << endl;
+//     if (n <= 1)
+//       return memo[n] = n;
+    
+//     if (memo[n] != -1)
+//       return memo[n];
+    
+//     return memo[n] = (via_memoization(n-1) + via_memoization(n-2));
+//   }
+  
+  /*Time Compleixty = O(N)
+  Space Compexity = O(N)*/
+  int top_down (int n)
   {
-    if (n < 2)
+    if (n <=1)
       return n;
-    return recursive_solution(n-1)+ recursive_solution(n-2);
+    
+    vector<int> top(n+1,-1);
+    
+    top[0] = 0;
+    top[1] = 1;
+    
+    for (int i = 2; i < top.size(); i++)
+      top[i] = top[i-1] + top[i-2];
+    
+    return top[n];
   }
   
-  /*Time Complexity = O(N)
-  Space Complexity = O(N) Height of recursion stack and vector
-  Top_down_approach*/
-  int memoization_solution(int n,vector<int> &dp)
+  int top_down_space(int n)
   {
     if (n < 2)
       return n;
     
-    if (dp[n] != -1)
+    int prev2 = 0;
+    int prev1 = 1;
+    int temp = 0;
+    for (int i = 2; i <= n; i++)
     {
-      return dp[n];
+      temp = prev1+prev2;
+      prev2 = prev1;
+      prev1 = temp;
     }
-    return dp[n] = memoization_solution(n-1,dp)+ memoization_solution(n-2,dp);
+    return prev1;
   }
-
-  /*Time Complexity = O(N)
-  Space Complexity = O(N) vector*/
-  int bottom_up_solution(int n)
-  {
-    vector<int> dp(n+1);
-    for (int i = 0 ;i <= n; i++)
-    {
-      if (i <=1)
-        dp[i] = i;
-      
-      else
-        dp[i] = dp[i-1] + dp[i-2];
-    }
-    return dp[n];
-  }
-  
-  
-  /*Time Complexity = O(N)
-  Space Complexity = O(1) */
-  int bottom_up_solution_space_optimized(int n)
-  {
-    if (n < 2)
-    {
-      return n;
-    }
-    int a = 0;
-    int b;
-    int answer = 1;
-    for (int i = 2 ;i <= n; i++)
-    {
-      b = answer;
-      answer += a ;
-      a = b; 
-    }
-    return answer;
-  }
-  
+public:
     int fib(int n) {
-      /*used in memoization
-      vector<int> dp(n+1,-1);
-      */
-        return bottom_up_solution_space_optimized(n);
+      memo = vector<int>(n+1,-1);
+        // return via_recursion(n);
+      return top_down(n); 
     }
 };
