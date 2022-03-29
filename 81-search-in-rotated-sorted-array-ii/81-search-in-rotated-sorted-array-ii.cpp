@@ -6,8 +6,15 @@ class Solution {
     
     while (st <= ed)
     {
-      int mid = (st + ((ed - st)/2));
       
+      
+       while (st < ed && nums[st] == nums[st+1])
+      st++;
+    
+   while (st < ed && nums[ed] == nums[ed-1])
+      ed--;
+    
+      int mid = (st + ((ed - st)/2));
       if (mid+1 < nums.size() && nums[mid] > nums[mid+1])
         return mid;
       
