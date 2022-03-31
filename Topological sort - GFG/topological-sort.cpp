@@ -52,7 +52,7 @@ class Solution
 	//Function to return list containing vertices in Topological order. 
 	vector<int> topoSort(int V, vector<int> adj[]) 
 		{
-	    /*vector<bool> vis(V,true);
+	    vector<bool> vis(V,true);
 	    stack<int> st;
 	    
 	    for (int i = 0; i < V; i++)
@@ -68,7 +68,7 @@ class Solution
 	        answer.push_back(st.top());
 	        st.pop();
 	    }
-	    return answer;*/
+	    return answer;
 	    
 	    vector<int> count_id(V,0);
 	    for (int i = 0; i < V; i++)
