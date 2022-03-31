@@ -41,15 +41,12 @@ class Solution {
                             else
                             {
                                 if (color[adj[index][i]] != flag)
-                                {
                                     return false;
-                                }
                             }
                         }
                         size--;
                     }
                 }
-                
             }
         }
         return true;
@@ -68,16 +65,12 @@ class Solution {
             if (color[adj[index][i]] == -1)
             {
                 if (!DFS_traversal(adj[index][i],adj,color,flag))
-                {
                     return false;
-                }
             }
             else
             {
                 if (color[adj[index][i]] != flag)
-                {
                     return false;
-                }
             }
         }
         return true;
@@ -102,7 +95,7 @@ class Solution {
     }
 public:
 	bool isBipartite(int V, vector<int>adj[]){
-	    /*return B(FS(V,adj);*/
+	    return BFS(V,adj);
 	    return DFS(V,adj);
 	}
 
