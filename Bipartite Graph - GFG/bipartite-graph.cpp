@@ -95,7 +95,7 @@ class Solution {
     }
 public:
 	bool isBipartite(int V, vector<int>adj[]){
-	    return BFS(V,adj);
+	    //return BFS(V,adj);
 	    return DFS(V,adj);
 	}
 
