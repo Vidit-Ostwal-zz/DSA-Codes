@@ -67,6 +67,26 @@ public:
   
   
     vector<vector<int>> subsets(vector<int>& nums) {
-      return iterative_approach(nums);
+      //return iterative_approach(nums);
+      
+      int number  = pow(2,nums.size());
+      vector<vector<int>> answer;
+      for (int i = 0; i < number; i++)
+      {
+        int num = i;
+        vector<int> temp;
+        int j = nums.size()-1;
+        while (num)
+        {
+          int flag = num&1;
+          if (flag)
+            temp.push_back(nums[j]);
+          
+          num = num >> 1;
+          j--;
+        }
+        answer.push_back(temp);
+      }
+      return answer;
     }
 };
