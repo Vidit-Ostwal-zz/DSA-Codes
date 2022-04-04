@@ -18,8 +18,6 @@ class Solution {
     if (root  == NULL )
       return 0;
     
-    
-    
     if (flag)
     {
       if (u1_true.find(root) != u1_true.end())
