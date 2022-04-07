@@ -36,7 +36,7 @@ public:
       int answer = 0;
       while (st <= ed)
       {
-        cout << st <<  "                  " << ed << endl;
+        // cout << st <<  "                  " << ed << endl;
         int mid = st + ((ed - st)/2);
         
         int temp = isPossible(nums,mid);
