@@ -1,80 +1,72 @@
-struct Node {
+struct Node{
   Node* links[26];
-  bool  flag  = false;
+  bool flag = false;
   
-  bool containskey(char ch)
+  bool Containskey(char ch)
   {
-    return links[ch - 'a'] != NULL;
+    return (links[ch - 'a'] != NULL);
   }
   
-  Node* getkey(char ch)
+  void putchar(char ch, Node* temp)
   {
-    return links[ch - 'a'];
+    links[ch -'a'] = temp;
   }
   
-  void put (char ch, Node* temp)
+  Node* getchar(char ch)
   {
-    links[ch - 'a'] = temp;
+    return links[ch- 'a'];
   }
   
-  
-  void setEnd()
+  void setflag()
   {
     flag = true;
-  }
-  
-  bool isEnd()
-  {
-    return flag == true;
-  }
+  } 
 };
 
 
 
 class Trie {
   Node* root;
-  
 public:
-  
     Trie() {
         root = new Node();
     }
     
     void insert(string word) {
-      Node* temp = root;
+        Node* node = root;
+      
       for (int i = 0; i < word.length(); i++)
       {
-        if (! temp -> containskey(word[i]))
-          temp -> put(word[i],new Node());
+        if (!node -> Containskey(word[i]))
+          node -> putchar(word[i],new Node());
         
-        temp = temp -> getkey(word[i]);
+        node = node -> getchar(word[i]);
       }
-      temp ->setEnd();
+      node -> setflag();
     }
     
     bool search(string word) {
-        Node* temp = root;
+        Node* node = root;
+      
       for (int i = 0; i < word.length(); i++)
       {
-        if (!temp -> containskey(word[i]))
+        if (!node -> Containskey(word[i]))
           return false;
         
-        temp = temp -> getkey(word[i]);
+        node = node -> getchar(word[i]);
       }
-      if (temp -> isEnd())
-        return true;
-      
-      return false;
+      return node -> flag;
     }
     
-    bool startsWith(string prefix) {
-        Node* temp = root;
-      for (int i = 0 ;i < prefix.length(); i++)
+    bool startsWith(string word) {
+        Node* node = root;
+      
+      for (int i = 0; i < word.length(); i++)
       {
-        if (!temp -> containskey(prefix[i]))
-            return false;
+        if (!node -> Containskey(word[i]))
+          return false;
         
-        temp = temp -> getkey(prefix[i]);
+        node = node -> getchar(word[i]);
       }
       return true;
     }
