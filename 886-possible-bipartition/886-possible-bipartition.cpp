@@ -104,7 +104,7 @@ public:
     bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
         unordered_map<int,vector<int>> hash_map = get_adjacency_matrix(dislikes);
       
-      /*return check_via_DFS(n,hash_map);*/
+      // return check_via_DFS(n,hash_map);
       
       return check_via_BFS(n,hash_map);
     }
