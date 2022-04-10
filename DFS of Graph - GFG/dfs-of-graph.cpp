@@ -5,7 +5,7 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
     
-    /* Time Compplexity = O(N) + O(E)
+    /* Time Compplexity = O(N + E)
     Space Complexity = O(N) + O(N)*/
     vector<int> final_vector;
     
