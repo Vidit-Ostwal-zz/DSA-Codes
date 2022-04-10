@@ -3,6 +3,7 @@
 using namespace std;
 
  // } Driver Code Ends
+
 class Solution {
   public:
   /*Time Complexity =  O(N) + O(E)
@@ -22,18 +23,14 @@ class Solution {
           if (vis[adj[index][i]] == 0)
           {
               if (check_self_DFS(vis,curr_vis,adj[index][i],adj))
-              {
                   return true;
-              }
           }
           
           /*Visited*/
           else
           {
               if (curr_vis[adj[index][i]] == 1)
-              {
                   return true;
-              }
           }
       }
       
@@ -53,9 +50,7 @@ class Solution {
             if (vis[i] == 0)
             {
                 if (check_self_DFS(vis,cur_vis,i,adj))
-                {
                     return true;
-                }
             }
         }
         return false;
