@@ -1,8 +1,6 @@
 class Solution {
   vector<int> spiral (vector<vector<int>> matrix, int start_row, int end_row, int start_col, int end_col)
   {
-    
-    
     if (start_row > end_row || start_col > end_col)
       return {};
  
