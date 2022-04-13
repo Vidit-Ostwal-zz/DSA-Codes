@@ -59,10 +59,35 @@ class Solution {
       }
       return answer;
   */
+  
+  int Kadane_Algo (vector<int> A)
+  {
+    int sum = 0;
+    int answer = INT_MIN;
+    for (int i = 0; i < A.size(); i++)
+    {
+      sum += A[i];
+      
+      if (sum < 0)
+        sum = 0;
+      
+      answer = max(answer,sum);
+    }
+    return answer;
+  }
 public:
     int maxSubArray(vector<int>& nums) {
       /*Start by including the first case, a negative integer case can be there
         return recursive_solution(nums,0,0);*/
-      return top_down_solution(nums);
+      // return top_down_solution(nums);
+      
+      int X =  Kadane_Algo (nums);
+      
+      if (X == 0)
+      {
+        sort(nums.begin(),nums.end());
+        return nums[nums.size()-1];
+      }
+      return X;
     }
 };
