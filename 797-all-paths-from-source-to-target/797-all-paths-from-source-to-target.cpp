@@ -4,13 +4,13 @@ class Solution {
   
   void BFS (vector<vector<int>> graph)
   {
-    vector<bool> visited(graph.size(),true);
+    // vector<bool> visited(graph.size(),true);
     queue<pair<int,vector<int>>> q;
     
     vector<int> temp;
     temp.push_back(0);
     q.push(make_pair(0,temp));
-    visited[0] = false;
+    // visited[0] = false;
     while (!q.empty())
     {
       auto it = q.front();
@@ -23,12 +23,9 @@ class Solution {
       
       for (int j = 0; j < graph[i].size(); j++)
       {
-        if (visited[graph[i][j]])
-        {
           it.second.push_back(graph[i][j]);
           q.push(make_pair(graph[i][j],it.second));
           it.second.pop_back();
-        }
       }
     }
   }
