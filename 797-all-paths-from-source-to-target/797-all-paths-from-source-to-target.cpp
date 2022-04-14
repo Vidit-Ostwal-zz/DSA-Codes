@@ -29,10 +29,28 @@ class Solution {
       }
     }
   }
+  
+  void DFS (vector<vector<int>> graph, int in,vector<int> temp)
+  {
+    if (in == graph.size()-1)
+    {
+      answer.push_back(temp);
+      return;
+    }
+  
+    for (int i = 0; i < graph[in].size(); i++)
+    {
+      temp.push_back(graph[in][i]);
+      DFS(graph,graph[in][i],temp);
+      temp.pop_back();
+    }
+    
+  }
 public:
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
       // make_map (graph);
-      BFS(graph);
+      // BFS(graph);
+      DFS(graph,0,{0});
       return answer;
     }
 };
