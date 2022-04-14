@@ -10,21 +10,37 @@ class Solution {
   }
 public:
     int findCenter(vector<vector<int>>& edges) {
-        make_tree (edges);
+      unordered_map<int,int> u2;
       
-      auto it = u1.begin();
+      u2[edges[0][1]]++;
+      u2[edges[0][0]]++;
+      u2[edges[1][1]]++;
+      u2[edges[1][0]]++;
       
-      int answer = 0;
-      int index = 0;
-      while (it != u1.end())
+      auto it = u2.begin();
+      
+      while (it != u2.end())
       {
-        if (answer < it->second.size())
-        {
-          answer = it -> second.size();
-          index = it->first;
-        }
+        if( it -> second > 1)
+          return it -> first;
         it++;
       }
-      return index;
+      return -2;
+        // make_tree (edges);
+      
+//       auto it = u1.begin();
+      
+//       int answer = 0;
+//       int index = 0;
+//       while (it != u1.end())
+//       {
+//         if (answer < it->second.size())
+//         {
+//           answer = it -> second.size();
+//           index = it->first;
+//         }
+//         it++;
+//       }
+//       return index;
     }
 };
