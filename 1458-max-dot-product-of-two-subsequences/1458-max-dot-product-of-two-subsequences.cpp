@@ -24,8 +24,8 @@ class Solution {
   }
 public:
     int maxDotProduct(vector<int>& nums1, vector<int>& nums2) {
-    dp_1 = vector<vector<int>> (nums1.size()+1,vector<int>(nums2.size()+1,-1));
-      dp_2 = vector<vector<int>> (nums1.size()+1,vector<int>(nums2.size()+1,-1));
+//     dp_1 = vector<vector<int>> (nums1.size()+1,vector<int>(nums2.size()+1,-1));
+//       dp_2 = vector<vector<int>> (nums1.size()+1,vector<int>(nums2.size()+1,-1));
     
        dp = vector<vector<int>> (nums1.size()+1,vector<int>(nums2.size()+1,-1));
       // return max_product(nums1,nums2,0,0,false);
