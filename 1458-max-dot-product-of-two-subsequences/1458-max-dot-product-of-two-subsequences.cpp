@@ -40,9 +40,9 @@ public:
           else 
             dp[i][j] = max(max(nums1[i-1]*nums2[j-1]+dp[i-1][j-1],dp[i-1][j-1]),max(dp[i-1][j],dp[i][j-1]));
           
-          cout << dp[i][j] << "  ";
+          // cout << dp[i][j] << "  ";
         }
-        cout << endl;
+        // cout << endl;
       }
       
       if (dp[nums1.size()][nums2.size()] > 0)
