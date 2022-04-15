@@ -83,6 +83,7 @@ public:
       
       int X =  Kadane_Algo (nums);
       
+      /*X == 0 means that all teh values in the nums vector are negative or zero therefore we need to return the largest sum in the overall nums we can sort teh vector adn then reutrn the maximum number*/
       if (X == 0)
       {
         sort(nums.begin(),nums.end());
