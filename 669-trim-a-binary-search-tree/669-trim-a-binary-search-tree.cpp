@@ -15,9 +15,11 @@ public:
       if (root == NULL)
         return root;
       
-        if ((root -> val < low || root -> val > high ) && (root -> left == NULL && root -> right == NULL))
-          return NULL;
+      /*Leaf Node Not Satisfying the condition*/
+//         if ((root -> val < low || root -> val > high ) && (root -> left == NULL && root -> right == NULL))
+//           return NULL;
       
+      /*Normal Condition*/
       if (root -> val >= low && root -> val <= high)
       {
         root -> left = trimBST(root -> left,low,high);
