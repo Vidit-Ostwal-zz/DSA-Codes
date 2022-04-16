@@ -16,12 +16,12 @@ class Solution {
     if (root == NULL)
       return ;
     
-    if (root -> right)
-      reversepreorder(root -> right);
+    // if (root -> right)
+    reversepreorder(root -> right);
     root -> val += maxi;
     maxi = root -> val;
-    if (root -> left)
-      reversepreorder(root -> left);
+    // if (root -> left)
+    reversepreorder(root -> left);
   }
 public:
     TreeNode* bstToGst(TreeNode* root) {
