@@ -42,7 +42,7 @@ public:
       
       for (int i = 0; i < dp_new.size(); i++)
       {
-        cout << dp[i] << "    " << dp_new[i] << endl;
+        // cout << dp[i] << "    " << dp_new[i] << endl;
         if (dp[i] == answer)
           answerq += dp_new[i];
       }
