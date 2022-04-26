@@ -1,4 +1,5 @@
 class Solution {
+  /*Prism Algorithm*/ 
 public:
     int minCostConnectPoints(vector<vector<int>>& points) {
       
