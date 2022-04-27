@@ -77,7 +77,7 @@ public:
       while (it != u1.end())
       {
         sort(it->second.begin(),it->second.end());
-        cout << it->first << "     " << it->second << endl;
+        // cout << it->first << "     " << it->second << endl;
         it++;
       }
       
