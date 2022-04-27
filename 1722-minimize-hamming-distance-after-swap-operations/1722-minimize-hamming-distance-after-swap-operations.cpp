@@ -51,9 +51,9 @@ public:
        for (int i = 0; i < parent.size(); i++)
          find_parent(i);
       
-      for (int i = 0; i < parent.size(); i++)
-        cout << parent[i] << "   " ;
-      cout << endl;
+//       for (int i = 0; i < parent.size(); i++)
+//         cout << parent[i] << "   " ;
+//       cout << endl;
       for (int i = 0; i < parent.size(); i++)
         u2[parent[i]].push_back(i);
       
@@ -67,7 +67,7 @@ public:
         {
           visited[it->second[i]] = false;
           temp[s[it->second[i]]]++;
-           cout << temp.size() << " ";
+           // cout << temp.size() << " ";
           temp[t[it->second[i]]]--;
           
           if (temp.find(t[it->second[i]]) != temp.end() && temp[t[it->second[i]]] == 0)
@@ -76,7 +76,7 @@ public:
           if (temp.find(s[it->second[i]]) != temp.end() && temp[s[it->second[i]]] == 0)
             temp.erase(s[it->second[i]]);
           
-          cout << temp.size() << "    ";
+          // cout << temp.size() << "    ";
         }
         
         auto it1 = temp.begin();
