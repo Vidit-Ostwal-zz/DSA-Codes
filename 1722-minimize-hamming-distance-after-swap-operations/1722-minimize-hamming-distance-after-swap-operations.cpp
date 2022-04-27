@@ -48,14 +48,18 @@ public:
         if (pairs[i][0] != pairs[i][1])
           union_by_rank(pairs[i][0],pairs[i][1]);
       
-       for (int i = 0; i < parent.size(); i++)
-         find_parent(i);
+//        for (int i = 0; i < parent.size(); i++)
+//          find_parent(i);
       
 //       for (int i = 0; i < parent.size(); i++)
 //         cout << parent[i] << "   " ;
 //       cout << endl;
+      
       for (int i = 0; i < parent.size(); i++)
+      {
+        find_parent(i);
         u2[parent[i]].push_back(i);
+      }
       
       auto it = u2.begin();
       
