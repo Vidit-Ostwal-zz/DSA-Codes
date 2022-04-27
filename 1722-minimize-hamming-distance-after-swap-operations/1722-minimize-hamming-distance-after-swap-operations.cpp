@@ -69,16 +69,17 @@ public:
         
         for (int i = 0; i < it->second.size(); i++)
         {
-          visited[it->second[i]] = false;
-          temp[s[it->second[i]]]++;
-           // cout << temp.size() << " ";
+          int index = it->second[i];
+          visited[index] = false;
+          temp[s[index]]++;
+          
           temp[t[it->second[i]]]--;
           
-          if (temp.find(t[it->second[i]]) != temp.end() && temp[t[it->second[i]]] == 0)
-            temp.erase(t[it->second[i]]);
+          if (temp.find(t[index]) != temp.end() && temp[t[index]] == 0)
+            temp.erase(t[index]);
           
-          if (temp.find(s[it->second[i]]) != temp.end() && temp[s[it->second[i]]] == 0)
-            temp.erase(s[it->second[i]]);
+          if (temp.find(s[index]) != temp.end() && temp[s[index]] == 0)
+            temp.erase(s[index]);
           
           // cout << temp.size() << "    ";
         }
