@@ -1,76 +1,71 @@
 class Solution {
-  int max_x;
-  int max_y;
-public:
   
-  bool isvalid(int x, int y)
+  /*classical BFS Algorithm, now problem is we can approach a particular cell form multiple sides, so maintaining a visited vector won't help as we might need to visit it again, therefore we need to make a distance vector adn push when ever this distance will be lesser than the curr one, and this contniuse as long as possible*/
+  
+  int X;
+  int Y;
+  
+  bool isValid(int x, int y)
   {
-    if (x >= 0 && y >= 0 && x <= max_x && y <= max_y)
-      return true;
-    
-    return false;
+    return (x >= 0 && x < X && y >= 0 && y < Y);
   }
-  
+public:
     int minimumEffortPath(vector<vector<int>>& heights) {
-      max_x = heights.size()-1;
-      max_y = heights[0].size()-1;
+      vector<vector<int>> dis(heights.size(),vector<int>(heights[0].size(),INT_MAX));
+      X = heights.size();
+      Y = heights[0].size();
       
-        /*Classical BFS Algorithm*/
-      /*You push the element only when the distance is lower*/
+      dis[0][0] = 0;
       
-      vector<vector<int>> map(heights.size(),vector<int>(heights[0].size(),INT_MAX));
-      map[0][0] = 0;
+      queue<pair<int,int>> pq;
+      pq.push(make_pair(0,0));
       
-      queue<pair<int,int>> q;
-      q.push({0,0});
-      
-      while (!q.empty())
+      while (!pq.empty())
       {
-        pair<int,int> pt = q.front();
-        int x = pt.first;
-        int y = pt.second;
-        q.pop();
+        int x = pq.front().first;
+        int y = pq.front().second;
+        // cout << x  << "   " << y << endl;
+        int temp1 = dis[x][y];
+        int temp = 0;
+        pq.pop();
         
-        if (isvalid(x+1,y))
+        if (isValid(x+1,y))
         {
-          int curr_eff = abs(heights[x+1][y] - heights[x][y]);
-          if (map[x+1][y] > max(map[x][y],curr_eff))
+          if ( max(dis[x][y],abs(heights[x+1][y] - heights[x][y])) < dis[x+1][y])
           {
-            map[x+1][y] = max(map[x][y],curr_eff);
-            q.push({x+1,y});
+            dis[x+1][y] = max(temp1,abs(heights[x+1][y] - heights[x][y]));
+            pq.push(make_pair(x+1,y));
           }
         }
         
-        if (isvalid(x-1,y))
+        if (isValid(x,y+1))
         {
-          int curr_eff = abs(heights[x-1][y] - heights[x][y]);
-          if (map[x-1][y] > max(map[x][y],curr_eff))
+          if ( max(dis[x][y],abs(heights[x][y+1] - heights[x][y])) < dis[x][y+1])
           {
-            map[x-1][y] = max(map[x][y],curr_eff);
-            q.push({x-1,y});
+            dis[x][y+1] = max(temp1,abs(heights[x][y+1] - heights[x][y]));
+            pq.push(make_pair(x,y+1));
           }
         }
         
-        if (isvalid(x,y+1))
+        if (isValid(x-1,y))
         {
-          int curr_eff = abs(heights[x][y+1] - heights[x][y]);
-          if (map[x][y+1] > max(map[x][y],curr_eff))
+          if ( max(dis[x][y], abs(heights[x-1][y] - heights[x][y])) < dis[x-1][y])
           {
-            map[x][y+1] = max(map[x][y],curr_eff);
-            q.push({x,y+1});
+            dis[x-1][y] = max(temp1,abs(heights[x-1][y] - heights[x][y]));
+            pq.push(make_pair(x-1,y));
           }
         }
         
-        if (isvalid(x,y-1))
+        if (isValid(x,y-1))
         {
-          int curr_eff = abs(heights[x][y-1] - heights[x][y]);
-          if (map[x][y-1] > max(map[x][y],curr_eff))
+          if ( max(dis[x][y] , abs(heights[x][y-1] - heights[x][y])) < dis[x][y-1])
           {
-            map[x][y-1] = max(map[x][y],curr_eff);
-            q.push({x,y-1});
+            dis[x][y-1] = max(temp1, abs(heights[x][y-1] - heights[x][y]));
+            pq.push(make_pair(x,y-1));
           }
         }
       }
-      return map[heights.size()-1][heights[0].size()-1];
+      
+      return dis[X-1][Y-1];
     }
 };
