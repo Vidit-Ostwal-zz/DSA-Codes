@@ -9,15 +9,9 @@ class Solution {
     
     while (!q.empty())
     {
-//       for (int i = 0 ; i < colour.size(); i++)
-//         cout << colour[i] << "    ";
-      
-      // cout << endl;
-      
       int k = q.front();
       c = colour[k];
       q.pop();
-      
       c = (c) ? 0 : 1;
       
       for (int j = 0; j < graph[k].size(); j++)
@@ -39,13 +33,10 @@ public:
         colour = vector<int>(graph.size(),-1);
       
       for (int i = 0 ; i < graph.size(); i++)
-      {
         if (colour[i] == -1)
-        {
           if (!do_BFS(i,0,graph))
             return false;
-        }
-      }
+      
       return true;
     }
 };
