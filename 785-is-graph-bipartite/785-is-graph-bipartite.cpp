@@ -12,7 +12,7 @@ class Solution {
 //       for (int i = 0 ; i < colour.size(); i++)
 //         cout << colour[i] << "    ";
       
-      cout << endl;
+      // cout << endl;
       
       int k = q.front();
       c = colour[k];
