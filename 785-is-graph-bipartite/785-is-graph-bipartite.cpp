@@ -53,7 +53,7 @@ public:
       
       for (int i = 0 ; i < graph.size(); i++)
         if (colour[i] == -1)
-          if (!do_DFS(i,0,graph))
+          if (!do_BFS(i,0,graph))
             return false;
       
       return true;
