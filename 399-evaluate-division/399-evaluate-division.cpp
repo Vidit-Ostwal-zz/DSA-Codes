@@ -76,9 +76,10 @@ class Solution {
         }
     }
     
-     for (int i = 0; i < parent.size(); i++)
-        cout << parent[i] << " " << value[i] << "    ";
-     cout << endl;
+//      for (int i = 0; i < parent.size(); i++)
+//         cout << parent[i] << " " << value[i] << "    ";
+//      cout << endl;
+//   }
   }
 public:
     vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
@@ -96,8 +97,8 @@ public:
       //   it++;
       // }
       
-      for (int i = 0; i < parent.size(); i++)
-        cout << parent[i] << "    " << value[i] << endl;
+//       for (int i = 0; i < parent.size(); i++)
+//         cout << parent[i] << "    " << value[i] << endl;
         
       for (int i = 0; i < queries.size(); i++)
       {
