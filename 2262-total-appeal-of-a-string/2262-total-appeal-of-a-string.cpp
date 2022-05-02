@@ -1,33 +1,25 @@
 class Solution {
 public:
     long long appealSum(string s) {
-        
+        // See Notes
       
-//       long long answer = 0;
-//       for (int i = 0; i < s.length(); i++)
-//       {
-//         unordered_map<char,int> u1;
-//         for (int j = i; j < s.length(); j++)
-//         {
-//           u1[s[j]]++;
-//           answer += u1.size();
-          
-//           if (u1.size() == 26)
-//           {
-//             answer += (long long)26*(s.length() - j - 1);
-//             break;
-//           }
-//         }
-//       }
-//       return answer;
+      /*this will store the contribution of just one index, we need to sum up all the elements in this, which will give the final answer*/
+      vector<long long> answer;
       
-      long long curr = 0;
-      long long res = 0;
+      /*Map will keep the trakc of previous index*/
       unordered_map<char,int> u1;
-      for (int i = 0; i < s.length(); i++)
+      
+      /*will keep the final answer*/
+      long long res = 1;
+      
+      answer.push_back(1);
+      u1[s[0]] = 1;
+      
+      for (int i = 1; i < s.length(); i++)
       {
-        curr += i + 1 - u1[s[i]];
-        res += curr;
+        int temp = answer[i-1] + i+1 - u1[s[i]];
+        res += temp;
+        answer.push_back(temp);
         u1[s[i]] = i+1;
       }
       return res;
