@@ -8,3 +8,4 @@ Contains solution of all the solved question
 - [Here](https://www.linkedin.com/feed/update/urn:li:activity:6916948543006019584/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A6916948543006019584%29)
 - [Here](https://www.linkedin.com/feed/update/urn:li:activity:6921087386319810560/)
 - [Here](https://www.linkedin.com/feed/update/urn:li:activity:6921332541383749632/)
+- [Here](https://leetcode.com/discuss/interview-question/2001789/collections-of-important-string-questions-pattern)
