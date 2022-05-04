@@ -1,1 +1,1 @@
-​
+We always need to remember about the, the **maximum** and the **minimum** with the current index, for this we are keeping temp_max and temp_min, now, the subarray can start from some previous index or we can start from something , in between, therefore, max and min would be done, with current index and curr index multiplied with previous temp_max and temp_min.
