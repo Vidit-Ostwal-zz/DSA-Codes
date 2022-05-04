@@ -1,27 +1,22 @@
 class Solution {
 public:
-    int maxOperations(vector<int>& nums, int target) {
-        int start = 0;
-        int end = nums.size() -1;
-        sort(nums.begin(),nums.end());
+    int maxOperations(vector<int>& nums, int k) {
+        map<int,int> u1;
       int answer = 0;
-        while (start < end)
+      
+      for (int i = 0; i < nums.size(); i++)
+      {
+        if (u1.find(k - nums[i]) == u1.end())
+          u1[nums[i]]++;
+        else 
         {
-          int sum  = nums[start] + nums[end];
+          answer++;
           
-          if (sum  == target)
-          {
-            answer++;
-            start++;
-            end--;
-          }
-          else if (sum > target)
-            end--;
-          
-          else
-            start++;
-          
+          u1[k-nums[i]]--;
+          if (u1[k-nums[i]] == 0)
+            u1.erase(k-nums[i]);
         }
+      }
       return answer;
     }
 };
