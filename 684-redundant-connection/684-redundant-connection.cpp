@@ -10,7 +10,7 @@ class Solution {
     return parent[i] = find_parent(parent[i]);
   }
   
-  
+  // A little modification in union by rank function, 
   bool union_by_rank(int i, int j)
   {
     i = find_parent(i);
