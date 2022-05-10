@@ -1,5 +1,6 @@
 class Solution {
 public:
+  // Cyclic Sort Approach
     int findDuplicate(vector<int>& nums) {
       int i = 0;
       while (i < nums.size())
