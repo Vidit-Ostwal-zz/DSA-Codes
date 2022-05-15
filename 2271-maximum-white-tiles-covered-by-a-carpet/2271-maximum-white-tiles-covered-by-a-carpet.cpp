@@ -75,6 +75,8 @@ class Solution {
 //       }
 //       return answer;
 //     }
+  
+  // Easy because of non overlapping problem
 public:  
   int maximumWhiteTiles(vector<vector<int>>& tiles, int carpetLen) 
   {
