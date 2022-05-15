@@ -22,6 +22,7 @@ when a partiular range will end,
 
 **Question Description**
 --
-Now again, given some ranges, we need to determine a particular range with respect to this particular range, be it distance of some kind or so,
+Now again, given some ranges, we need to determine a particular range with respect to this particular range, be it distance of some kind or so like a carpet [Link](https://leetcode.com/contest/biweekly-contest-78/problems/maximum-white-tiles-covered-by-a-carpet/),
 In this cases Binary Search will be very help ful to determine the index of the range vector to determine which range index this particular index belongs too.
 Prefix Sum is used alongside for some operation varying directly with respect to type of question.
+
