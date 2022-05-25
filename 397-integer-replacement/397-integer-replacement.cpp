@@ -1,13 +1,18 @@
 class Solution {
+  unordered_map<int,int> dp;
+  
   long long  Recursive(long long n)
   {
     if (pow(2,(int)log2(n)) == n)
-      return log2(n);
+      return dp[n] = log2(n);
+    
+    if (dp.find(n) != dp.end())
+      return dp[n];
     
     if (n%2)
-      return (long long)1+ min(Recursive(n+1),Recursive(n-1));
+      return dp[n] = (long long)1+ min(Recursive(n+1),Recursive(n-1));
     
-    return (long long)1 + Recursive(n/2);
+    return dp[n] = (long long)1 + Recursive(n/2);
   }
 public:
     int integerReplacement(int n) {
