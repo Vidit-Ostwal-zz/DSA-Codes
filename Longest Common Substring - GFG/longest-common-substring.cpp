@@ -22,7 +22,6 @@ class Solution{
     {
       return max(recursive_solution(text1,text2,index1,index2+1), recursive_solution(text1,text2,index1+1,index2));
     }
-    
     return 0;
   }
   
@@ -41,13 +40,14 @@ class Solution{
           dp[i][j] = 0;
         
         else if (text1[i-1] == text2[j-1])
-          {
-              dp[i][j] = 1 + dp[i-1][j-1];
-              result = max(result,dp[i][j]);
-          }
+        {
+            dp[i][j] = 1 + dp[i-1][j-1];
+        }
           
         else
           dp[i][j] = 0;
+          
+        result = max(result,dp[i][j]);
       }
     }
     
@@ -56,6 +56,7 @@ class Solution{
     
     int longestCommonSubstr (string S1, string S2, int n, int m)
     {
+        // return recursive_solution(S1,S2,0,0);
         return top_down_solution(S1,S2);
     }
 };
