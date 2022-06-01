@@ -1,55 +1,54 @@
 class Solution {
-public:
-  /*Example*/
-    string longestPalindrome(string s) {
-        int length = s.length();
-      vector<vector<int>> dp(length,vector<int>(length,0));
-      
-      for (int i = 0; i < length; i++)
-        dp[i][i] = 1;
-      
-      for (int i = 1; i < length;i++)
-        if (s[i] == s[i-1])
-          dp[i-1][i] = 2;
-      
-      int answer = INT_MIN;
-      int x = -1;
-      int y = -1;
-      for (int i = length-1; i >= 0; i--)
+  bool isPalindrome(string A)
+  {
+    string B = "";
+    B += A;
+    reverse(B.begin(),B.end());
+    return (A.compare(B) == 0);
+  }
+  
+  string top_down_solution(string A, string B)
+  {
+    int n = A.length();
+    int max_length = 0;
+    int X = -1;
+    int Y = -1;
+    string res ;
+    
+    vector<vector<int>> dp(n+1,vector<int>(n+1,0));
+    int result = 0;
+    for (int i = 1; i < dp.size(); i++)
+    {
+      for (int j = 1; j < dp[0].size(); j++)
       {
-        for (int j = length-1; j >=i; j--)
+        // Basic Code for Longest Substring, combining it with the reverse of A string, should typically give the largest 
+        // palindromic substring
+        
+       if (A[i-1] == B[j-1])
+         dp[i][j] = 1 + dp[i-1][j-1];
+        else
+          dp[i][j] = 0;
+        
+        if (max_length < dp[i][j])
         {
-          if (i == j)
-            dp[i][j] = 1;
-            
-          else if (j - i == 1)
+          string temp = A.substr(i-dp[i][j],dp[i][j]);
+          
+          if (isPalindrome(temp))
           {
-            if (s[i] == s[j])
-              dp[i][j] = 2;
-          }
-          
-          else if (dp[i+1][j-1] && (s[i] == s[j]))
-            dp[i][j] = 2 + dp[i+1][j-1];
-          
-          else
-          {}
-          
-          if (answer < dp[i][j])
-          {
-            answer = dp[i][j];
-            x = i;
-            y = j;
+            max_length = dp[i][j];
+            res = temp;
           }
         }
-      } 
-      
-      string temp = "";
-      while (x <= y)
-      {
-        temp += s[x];
-        x++;
       }
+    }
+    return res;
+  }
+public:
+    string longestPalindrome(string s) {
+        string B = "";
+      B += s;
+      reverse(B.begin(),B.end());
       
-      return temp;
+      return top_down_solution(s,B);
     }
 };
