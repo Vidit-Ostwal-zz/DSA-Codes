@@ -1,38 +1,41 @@
 class Solution {
+  vector<int> ClosingWindow(vector<vector<int>> A, int target)
+  {
+    int i = 0;
+    int j = A.size()-1;
+    
+    while (i < j)
+    {
+      int temp = A[i][0] + A[j][0];
+      
+      if (temp == target)
+      {
+        vector<int> B;
+        B.push_back(A[i][1]);
+        B.push_back(A[j][1]);
+        return B;
+      }
+      else if (temp > target)
+        j--;
+      else
+        i++;
+    }
+    return {-1};
+  }
 public:
-  /*Two Pointer Approach
-  Hash Map cannot be used because we map same values twice either use a vector of hash map
-  But that will be too much complicated
-  We need another thing in which these two things are paired up in some manner*/
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<pair<int,int>> v;
-        for (int i = 0; i < nums.size(); i++)
-        {
-          v.push_back(make_pair(nums[i],i));
-        }
-        sort(v.begin(),v.end());
-        
-        int start = 0;
-        int end = nums.size() -1;
-        
-        while (start <= end)
-        {
-          int sum  = v[start].first + v[end].first;
-          
-          if (sum  == target)
-          {
-            vector<int> answer;
-            answer.push_back(v[start].second);
-            answer.push_back(v[end].second);
-            return answer;
-          }
-          else if (sum > target)
-            end--;
-          
-          else
-            start++;
-          
-        }
-      return {};
+        vector<vector<int>> A;
+      for (int i = 0; i < nums.size(); i++)
+      {
+        vector<int> temp;
+        temp.push_back(nums[i]);
+        temp.push_back(i);
+        A.push_back(temp);
+      }
+      
+      // Indices Will remain Preserved;
+      sort(A.begin(),A.end());
+      
+      return ClosingWindow(A,target);
     }
 };
