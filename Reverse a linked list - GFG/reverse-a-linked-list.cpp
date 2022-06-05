@@ -46,10 +46,33 @@ class Solution
         return Recursive_Solution(curr,next);
     }
     
+    struct Node* Iterative_Solution(struct Node *head)
+    {
+        struct Node *prev = NULL;
+        struct Node *curr = head;
+        struct Node *Next = curr->next;
+        
+        while (curr != NULL)
+        {
+            curr -> next = prev;
+            // Reversed
+            
+            prev = curr;
+            curr = Next;
+            
+            if (Next != NULL)
+            {
+                Next = Next -> next;
+            }
+        }
+        return prev;
+    }
+    
     
     struct Node* reverseList(struct Node *head)
     {
-        return Recursive_Solution(NULL,head);
+        // return Recursive_Solution(NULL,head);
+        return Iterative_Solution(head);
     }
     
 };
