@@ -77,9 +77,7 @@ public:
     void reorderList(ListNode* head) {
       
       if (head == NULL || head -> next == NULL)
-      {
         return ;
-      }
       
       ListNode* middle = reversesplitmiddle (head);
       head = merge(head,middle);
