@@ -95,9 +95,8 @@ public:
   ListNode* prevmiddleNode(ListNode* head) {
     
     if (head == NULL || head -> next == NULL)
-    {
       return head;
-    }
+    
       ListNode* slow = head;
       ListNode* fast = head;
       ListNode* prevslow = slow;
@@ -105,26 +104,24 @@ public:
       while (fast -> next != NULL)
       {
         if (fast -> next -> next != NULL)
-        {
           fast = fast -> next -> next;
-        }
         else
-        {
           fast = fast -> next;
-        }
+        
         prevslow = slow;
         slow = slow -> next;
       }
     ListNode* mid = slow;
     prevslow->next = NULL;
-      return mid;
+      
+    return mid;
     }
-    ListNode* sortList(ListNode* head) {
+    
+  ListNode* sortList(ListNode* head) {
       
       if (head == NULL || head-> next == NULL)
-      {
         return head;
-      }
+    
       ListNode* mid = prevmiddleNode(head);
       ListNode* left = sortList(head);
       ListNode* right = sortList(mid);
