@@ -8,7 +8,7 @@ public:
     }
     
     void add(int num) {
-      cout << "add" << endl;
+      // cout << "add" << endl;
       if (num == 0)
       {
         temp = K;
@@ -24,7 +24,7 @@ public:
     }
     
     int getProduct(int k) {
-      cout << "Product" << endl;
+      // cout << "Product" << endl;
         if (k > temp.size())
         {
           return 0;
