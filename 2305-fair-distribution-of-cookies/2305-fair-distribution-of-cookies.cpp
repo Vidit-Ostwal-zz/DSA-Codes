@@ -37,10 +37,10 @@ class Solution {
       maxi = min(maxi,try_all(cookies,k,index+1,temp));
       temp[i] -= value;
       
-      if (temp[i] == 0)
-      {
-        break;
-      }
+      // if (temp[i] == 0)
+      // {
+      //   break;
+      // }
     }
     return maxi;
   }
