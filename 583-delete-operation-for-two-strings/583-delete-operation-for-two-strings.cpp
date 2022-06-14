@@ -1,24 +1,27 @@
 class Solution {
-public:
-  int top_down_solution(string text1, string text2)
+  vector<vector<int>> dp;
+  long long Helper(string A, string B, int indexA, int indexB)
   {
-    vector<vector<int>> dp(text1.length()+1,vector<int> (text2.length()+1,-1));
-    for (int i = 0; i <= text1.length();i++)
-    {
-      for (int j = 0; j <= text2.length(); j++)
-      {
-        if (i == 0 || j == 0)
-          dp[i][j] = 0;
-        
-        else
-          dp[i][j] = (text1[i-1] == text2[j-1]) ? 1 + dp[i-1][j-1] : max(dp[i-1][j],dp[i][j-1]);
-      }
-    }
-    return dp[text1.length()][text2.length()];
+    if (indexA == A.length() && indexB == B.length())
+      return 0;
+    
+    if (dp[indexA][indexB] != -1)
+      return dp[indexA][indexB];
+    
+    if (indexA < A.length() && indexB < B.length() && A[indexA] == B[indexB])
+      return dp[indexA][indexB] = Helper(A,B,indexA+1,indexB+1);
+    
+    if (indexA < A.length() && indexB < B.length())
+      return dp[indexA][indexB] = 1 + min(Helper(A,B,indexA+1,indexB),Helper(A,B,indexA,indexB+1));
+    
+    if (indexA < A.length() && indexB == B.length())
+      return dp[indexA][indexB] = 1 + Helper(A,B,indexA+1,indexB);
+    
+    return dp[indexA][indexB] = 1 + Helper(A,B,indexA,indexB+1);
   }
-  
-  
+public:
     int minDistance(string word1, string word2) {
-        return word1.length() + word2.length() - 2*top_down_solution(word1,word2);
+      dp = vector<vector<int>> (word1.length()+1,vector<int>(word2.length()+1,-1));
+        return Helper(word1,word2,0,0);
     }
 };
