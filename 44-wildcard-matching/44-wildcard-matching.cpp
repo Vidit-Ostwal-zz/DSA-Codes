@@ -1,59 +1,52 @@
 class Solution {
-  vector<vector<int>> dp;
-//   bool isPossible(string s, string p, int i, int j)
-//   {
-//     if (dp[i][j] != -1)
-//       return (dp[i][j] == 1) ? true : false;
+  vector<vector<int>> visited;
+  vector<vector<bool>> dp;
+  bool Helper (string A ,string B, int indexA,int indexB)
+  {
+    if (indexB == B.length() && indexA == A.length())
+      return true;
     
-//     if (i == s.length() && j == p.length())
-//       return dp[i][j] = true;
+    if (indexB == B.length() && indexA != A.length())
+      return false;
+  
+    if (visited[indexA][indexB] != -1)
+      return dp[indexA][indexB];
     
-//     if (j == p.length())
-//       return dp[i][j]= false;
+    visited[indexA][indexB] = 0;
     
-//     if (i == s.length())
-//     {
-//       for (int k = j; k < p.length(); k++)
-//         if (p[k] != '*')
-//           return dp[i][j] = false;
-      
-//       return dp[i][j] = true;
-//     }
+    if (indexA == A.length() && indexB != B.length())
+    {
+      while (indexB < B.length())
+      {
+        if (B[indexB] != '*')
+          return dp[indexA][indexB] = false;
+        indexB++;
+      }
+      return dp[indexA][indexB] = true;
+    }
     
-//     if (p[j] == '?')
-//       return dp[i][j] = isPossible(s,p,i+1,j+1);
+    if (A[indexA] == B[indexB] || B[indexB] == '?')
+      return dp[indexA][indexB] = Helper(A,B,indexA+1,indexB+1);
     
-//     if (p[j] >= 'a' && p[j] <= 'z')
-//     {
-//       if (p[j] == s[i])
-//         return dp[i][j] = isPossible(s,p,i+1,j+1);
-//       else
-//         return dp[i][j] = false;
-//     }
+    if (B[indexB] == '*')
+      return dp[indexA][indexB] = Helper(A,B,indexA+1,indexB+1) || Helper(A,B,indexA+1,indexB) || Helper(A,B,indexA,indexB+1);
     
-//     else
-//       return dp[i][j] = isPossible(s,p,i+1,j) || isPossible(s,p,i+1,j+1) || isPossible(s,p,i,j+1);
-//   }
+    return dp[indexA][indexB] = false;
+  }
 public:
     bool isMatch(string s, string p) {
-      dp = vector<vector<int>> (s.length()+1,vector<int>(p.length()+1,-1));
-//       if (s.length() == 0)
-//       {
-//         for (int i = 0; i < p.length(); i++)
-//           if (p[i] != '*')
-//             return false;
-        
-//         return true;
-//       }
+      // visited = vector<vector<int>> (s.length()+1,vector<int>(p.length()+1,-1));
+      dp = vector<vector<bool>> (s.length()+1,vector<bool>(p.length()+1,false));
       
       for (int i = 0; i < dp.size(); i++)
-      {
         for (int j = 0; j < dp[0].size(); j++)
         {
+          // Empty string empty
           if (i == 0 && j == 0)
             dp[i][j] = true;
           
-          else if (i == 0)
+          // input string non empty while pattern is something
+          else if( i == 0)
           {
             if (p[j-1] == '*')
               dp[i][j] = dp[i][j-1];
@@ -61,28 +54,21 @@ public:
               dp[i][j] = false;
           }
           
+          // pattern is empty but string is not.
           else if (j == 0)
             dp[i][j] = false;
           
-          else if (p[j-1] == '?')
+          else if (s[i-1] == p[j-1] || p[j-1] == '?')
             dp[i][j] = dp[i-1][j-1];
           
-          else if (p[j-1] >= 'a' && p[j-1] <= 'z')
-          {
-            if (p[j-1] == s[i-1])
-              dp[i][j] = dp[i-1][j-1];
-            else
-              dp[i][j] = false;
-          }
-            
-          else
+          else if (p[j-1] == '*')
             dp[i][j] = dp[i-1][j-1] || dp[i-1][j] || dp[i][j-1];
           
-          // cout << dp[i][j] << "  ";
+          else
+            dp[i][j] = false;
         }
-        // cout << endl;
-      }
       
       return dp[s.length()][p.length()];
+        // return Helper(s,p,0,0);
     }
 };
