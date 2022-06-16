@@ -1,54 +1,51 @@
 class Solution {
-  bool isPalindrome(string A)
+  bool isPalindrome (string temp)
   {
-    string B = "";
-    B += A;
-    reverse(B.begin(),B.end());
-    return (A.compare(B) == 0);
+    string A = "";
+    A += temp;
+    reverse(A.begin(),A.end());
+    return (temp.compare(A) == 0);
   }
   
-  string top_down_solution(string A, string B)
+  string LongestPalindromicSubstring(string A, string B)
   {
-    int n = A.length();
-    int max_length = 0;
-    int X = -1;
-    int Y = -1;
-    string res ;
+    vector<vector<int>> dp(A.length()+1,vector<int>(B.length()+1));
     
-    vector<vector<int>> dp(n+1,vector<int>(n+1,0));
-    int result = 0;
     for (int i = 1; i < dp.size(); i++)
     {
       for (int j = 1; j < dp[0].size(); j++)
       {
-        // Basic Code for Longest Substring, combining it with the reverse of A string, should typically give the largest 
-        // palindromic substring
-        
-       if (A[i-1] == B[j-1])
-         dp[i][j] = 1 + dp[i-1][j-1];
+        if (A[i-1] == B[j-1])
+          dp[i][j] = 1 + dp[i-1][j-1];
         else
           dp[i][j] = 0;
-        
-        if (max_length < dp[i][j])
+      }
+    }
+    
+    int max_length = 0;
+    string answer;
+    for (int i = dp.size()-1; i >= 0; i--)
+    {
+      for (int j = dp[0].size()-1; j >= 0; j--)
+      {
+        if (dp[i][j] > max_length)
         {
           string temp = A.substr(i-dp[i][j],dp[i][j]);
-          
           if (isPalindrome(temp))
           {
             max_length = dp[i][j];
-            res = temp;
+            answer = temp;
           }
         }
       }
     }
-    return res;
+    return answer;
   }
 public:
-    string longestPalindrome(string s) {
-        string B = "";
-      B += s;
+    string longestPalindrome(string A) {
+      string B = "";
+      B += A;
       reverse(B.begin(),B.end());
-      
-      return top_down_solution(s,B);
+        return LongestPalindromicSubstring(A,B);
     }
 };
