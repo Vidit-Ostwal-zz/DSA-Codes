@@ -1,5 +1,5 @@
 class Solution {
-  bool iswordbreak(string s,vector<string> wordDict,unordered_map<string,bool> &mp)
+  bool iswordbreak(string s,vector<string> &wordDict,unordered_map<string,bool> &mp)
   {
     if (s.length() == 0)
       return true;
