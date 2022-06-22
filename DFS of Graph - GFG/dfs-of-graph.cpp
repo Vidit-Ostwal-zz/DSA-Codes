@@ -4,38 +4,39 @@ using namespace std;
 
  // } Driver Code Ends
 class Solution {
-    
-    /* Time Compplexity = O(N + E)
-    Space Complexity = O(N) + O(N)*/
-    vector<int> final_vector;
-    
-    void dfs(int i, vector<bool>& visited_vector, vector<int> adj[])
-    {
-        final_vector.push_back(i);
-        for (int j = 0; j < adj[i].size(); j++)
-        {
-            if (visited_vector[adj[i][j]])
-            {
-                visited_vector[adj[i][j]] = false;
-                dfs(adj[i][j],visited_vector,adj);
-            }
-        }
-    }
-    
-    
   public:
+  
+  // Declaring the final vector
+  vector<int> final_vector;
+  
+  vector<bool> visited;
+  
+  void do_DFS (vector<int> adj[], int index)
+  {
+      visited[index] = false;
+      final_vector.push_back(index);
+      
+      for (int i = 0; i < adj[index].size(); i++)
+      {
+          if (visited[adj[index][i]])
+          {
+              do_DFS(adj,adj[index][i]);
+          }
+      }
+      return;
+  }
+  
+  
     // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+        // visited vector;
+        visited = vector<bool>(V,true);
         
-        /*Initializing a visited vector for all*/
-        vector<bool> visited_vector(V,true);
-        
-        for (int i = 0; i < V; i++)
+        for (int i = 0; i < visited.size(); i++)
         {
-            if (visited_vector[i])
+            if (visited[i])
             {
-                visited_vector[i] = false;
-                dfs(i,visited_vector,adj);
+                do_DFS(adj,i);
             }
         }
         return final_vector;
