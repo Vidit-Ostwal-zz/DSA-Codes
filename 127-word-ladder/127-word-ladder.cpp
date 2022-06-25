@@ -43,8 +43,8 @@ class Solution {
   }
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        unordered_set<string> st;
-      
+        
+      unordered_set<string> st;
       ladder = 0;
       
       for (int i = 0; i < wordList.size();i++)
