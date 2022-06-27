@@ -99,7 +99,7 @@ public:
         // cout << arr[0] << endl;
         for (int i = 1; i < N ;i++)
         {
-             maxi = max(maxi,arr[i]);
+            //  maxi = max(maxi,arr[i]);
             arr[i] = (arr[i] ^ arr[i-1]);
             // cout << arr[i] << endl;
              maxi = max(maxi,arr[i]);
