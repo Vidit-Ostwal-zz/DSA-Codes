@@ -1,72 +1,80 @@
-struct Node{
-  Node* links[26];
+struct Node {
+  Node* arr[26];
   bool flag = false;
   
-  bool Containskey(char ch)
+  bool checkchar(char ch)
   {
-    return (links[ch - 'a'] != NULL);
+    return arr[ch - 'a'] != NULL;
   }
   
-  void putchar(char ch, Node* temp)
+  void makenewnode(char ch)
   {
-    links[ch -'a'] = temp;
+    arr[ch - 'a'] = new Node();
   }
   
-  Node* getchar(char ch)
+  Node* charnode (char ch)
   {
-    return links[ch- 'a'];
+    return arr[ch - 'a'];
   }
   
-  void setflag()
+  void setFlag()
   {
     flag = true;
-  } 
+  }
+  
+  bool getflag()
+  {
+    return flag;
+  }
 };
-
 
 
 class Trie {
   Node* root;
 public:
     Trie() {
-        root = new Node();
+        root = new  Node();
     }
     
     void insert(string word) {
-        Node* node = root;
+        Node* temp = root;
       
       for (int i = 0; i < word.length(); i++)
       {
-        if (!node -> Containskey(word[i]))
-          node -> putchar(word[i],new Node());
-        
-        node = node -> getchar(word[i]);
+        char ch = word[i];
+        if (!(temp -> checkchar(ch)))
+          temp -> makenewnode(ch);
+        temp = temp -> charnode(ch);
       }
-      node -> setflag();
+      temp -> setFlag();
     }
     
     bool search(string word) {
-        Node* node = root;
+        Node* temp = root;
       
       for (int i = 0; i < word.length(); i++)
       {
-        if (!node -> Containskey(word[i]))
-          return false;
+        char ch = word[i];
         
-        node = node -> getchar(word[i]);
+        if (temp -> checkchar(ch))
+          temp = temp -> charnode(ch);
+        else
+          return false;
       }
-      return node -> flag;
+      return temp -> getflag();
     }
     
     bool startsWith(string word) {
-        Node* node = root;
+        Node* temp = root;
       
       for (int i = 0; i < word.length(); i++)
       {
-        if (!node -> Containskey(word[i]))
+        char ch = word[i];
+         
+        if (temp -> checkchar(ch))
+          temp = temp -> charnode(ch);
+        else
           return false;
-        
-        node = node -> getchar(word[i]);
       }
       return true;
     }
