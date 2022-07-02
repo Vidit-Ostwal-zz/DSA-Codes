@@ -23,10 +23,10 @@ class Solution {
             return 1;
         }
         
-        if (dp[index] != -1)
-        {
-            return dp[index];
-        }
+        // if (dp[index] != -1)
+        // {
+        //     return dp[index];
+        // }
         
         // canvisit[index] = false;
         
