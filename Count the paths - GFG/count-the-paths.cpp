@@ -6,7 +6,7 @@ using namespace std;
 class Solution {
     unordered_map<int,vector<int>> mapofedges;
     vector<int> dp;
-    vector<bool> canvisit;
+    // vector<bool> canvisit;
     void make_map (vector<vector<int>> &B)
     {
         for (int i = 0; i < B.size(); i++)
@@ -23,7 +23,12 @@ class Solution {
             return 1;
         }
         
-        canvisit[index] = false;
+        if (dp[index] != -1)
+        {
+            return dp[index];
+        }
+        
+        // canvisit[index] = false;
         
         int answer = 0;
         for (int i = 0; i < mapofedges[index].size(); i++)
@@ -31,15 +36,15 @@ class Solution {
             answer += numberofways(mapofedges[index][i],desti);
         }
         
-        canvisit[index] = true;
-        return answer;
+        // canvisit[index] = true;
+        return dp[index] = answer;
     }
 public:
 	int possible_paths(vector<vector<int>>edges, int n, int s, int d){
 	    
 	    make_map(edges);
-	   // dp = vector<int>(n,-1); 
-	   canvisit = vector<bool> (n,true);
+	    dp = vector<int>(n,-1); 
+	   //canvisit = vector<bool> (n,true);
 	    return numberofways(s, d);
 	}
 };
