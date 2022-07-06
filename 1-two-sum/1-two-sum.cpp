@@ -39,11 +39,14 @@ class Solution {
     }
     return {0};
   }
+  
+  // Using STL and Binary Search Functions  
+  
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
       
-      return Hash_map(nums,target);
-      
+      // return Hash_map(nums,target);
+        
       
       
         vector<vector<int>> A;
