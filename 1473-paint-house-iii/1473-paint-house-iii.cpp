@@ -39,7 +39,7 @@ public:
     int minCost(vector<int>& houses, vector<vector<int>>& cost, int m, int n, int target) {
         
       
-      dp = vector<vector<vector<long long>>>(101,vector<vector<long long>>(101,vector<long long>(21,-1)));
+      dp = vector<vector<vector<long long>>>(m,vector<vector<long long>>(target+1,vector<long long>(n+1,-1)));
       long long final_cost = Recursive_Solution(houses,0,cost,n,target-1,0);
       
       return (final_cost >= INT_MAX) ? -1 : final_cost;
