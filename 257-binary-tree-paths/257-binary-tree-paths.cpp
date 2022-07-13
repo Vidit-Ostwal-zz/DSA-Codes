@@ -10,6 +10,7 @@ public:
         if(node->left == NULL && node->right == NULL){
             ds = ds + to_string(node->val);
             ans.push_back(ds);
+          ds.pop_back();
             return;
         }
         
@@ -19,7 +20,6 @@ public:
         
         
         f(node->left,ans,ds);
-       
         f(node->right,ans,ds);
     }
     
