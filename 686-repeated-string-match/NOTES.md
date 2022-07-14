@@ -1,0 +1,1 @@
+If we make a KMP vector for the pattern, then we need to use that KMP vector in string matching as we used to do in the brute force;
