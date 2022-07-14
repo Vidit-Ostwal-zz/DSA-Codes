@@ -17,7 +17,7 @@ public:
       if (headA == NULL || headB == NULL)
         return NULL;
       
-      while ( A!= B && A != NULL && B != NULL)
+      while ( A!= B)
       {
         A = A -> next;
         B = B -> next;
