@@ -8,15 +8,16 @@
  */
 class Solution {
 public:
-  // Change the values to negative and then again traverse the whole thing, first negative value will be the answer
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+      
       ListNode* A = headA;
       ListNode* B = headB;
       
-      if (A == NULL || B == NULL)
+      // if ()
+      if (headA == NULL || headB == NULL)
         return NULL;
       
-      while (A != B && A != NULL && B != NULL)
+      while ( A!= B && A != NULL && B != NULL)
       {
         A = A -> next;
         B = B -> next;
@@ -24,16 +25,16 @@ public:
         if (A == B)
           return A;
         
-        if (!A)
-          A = headB;
+        if (A == NULL)
+          A = headA;
         
-        if (!B)
-          B = headA;
+        if (B == NULL)
+          B = headB;
       }
       
-      if (!A && !B)
-        return NULL;
+      if (A != NULL)
+        return A;
       
-      return A;
+      return NULL;
     }
 };
