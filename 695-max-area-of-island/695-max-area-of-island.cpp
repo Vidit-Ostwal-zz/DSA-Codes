@@ -42,7 +42,7 @@ public:
             }
             
             answer = max(answer,temp_area);
-            cout << answer << endl;
+            // cout << answer << endl;
           }  
         }
       }
