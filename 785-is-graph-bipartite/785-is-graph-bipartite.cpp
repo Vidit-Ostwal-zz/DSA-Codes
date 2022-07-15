@@ -1,61 +1,46 @@
-class Solution {
-  vector<int> colour;
+class Solution
+{
+  vector<int> color;
   
-  bool do_BFS(int i, int c,vector<vector<int>> graph)
+  bool doDFS (vector<vector<int>> & graph,int index, int c)
   {
-    colour[i] = c;
-    queue<int> q;
-    q.push(i);
-    
-    while (!q.empty())
+    if (color[index] != -1)
     {
-      int k = q.front();
-      c = colour[k];
-      q.pop();
-      c = (c) ? 0 : 1;
-      
-      for (int j = 0; j < graph[k].size(); j++)
-      {
-        if (colour[graph[k][j]] == -1)
-        {
-          colour[graph[k][j]] = c;
-          q.push(graph[k][j]);
-        }
-        else if (colour[graph[k][j]] != c)
-          return false;
-      }
+      // Node already visited
+      if (color[index] == c)
+        return true;
+      else
+        return false;
     }
-    return true;
-  }
-  
-  bool do_DFS(int i, int c,vector<vector<int>> graph)
-  {
-    if (colour[i] == c)
-      return true;
     
-    if (colour[i] == -1)
-      colour[i] = c;
-    
-    if (colour[i] != c)
-      return false;
-    
-    c = (c) ? 0 : 1;
+    color[index] = c;
+    c = !c;
     
     bool flag = true;
-    for (int j = 0; j < graph[i].size(); j++)
-      flag = flag && do_DFS(graph[i][j],c,graph);
+    
+    for (int i = 0; i < graph[index].size(); i++)
+      flag = flag && doDFS(graph,graph[index][i],c);
     
     return flag;
   }
-public:
-    bool isBipartite(vector<vector<int>>& graph) {
-        colour = vector<int>(graph.size(),-1);
-      
-      for (int i = 0 ; i < graph.size(); i++)
-        if (colour[i] == -1)
-          if (!do_BFS(i,0,graph))
-            return false;
-      
-      return true;
-    }
+  
+    public:
+        bool isBipartite(vector<vector < int>> &graph) {
+        
+          int N = graph.size();
+          color = vector<int>(N,-1);
+          
+          bool flag = true;
+          
+          for (int i = 0; i < N; i++)
+          {
+            if (color[i] == -1)
+            {
+              // Node Yet not visited
+              flag = flag && doDFS(graph,i,1);
+            }
+          }
+          
+          return flag;
+        }
 };
