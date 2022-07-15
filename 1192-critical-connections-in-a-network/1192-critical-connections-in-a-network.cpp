@@ -32,7 +32,10 @@ class Solution {
       if (curr_node == parent)
         continue;
       else if (!canVisit[curr_node])
+      {
+        // this particular edge can never be a bridge as the other point is already visited
         lowtime[index] = min(lowtime[index],lowtime[curr_node]);
+      }
       else
       {
         dfstraverse(curr_node,index);
@@ -52,7 +55,6 @@ public:
     vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
         
       make_map(connections);
-      
       canVisit = vector<bool> (n,true);
       distime = vector<int> (n,0);
       lowtime = vector<int> (n,0);
