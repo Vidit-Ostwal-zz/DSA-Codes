@@ -9,25 +9,33 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
-  int answer = -1;
-  int count = 0;
+
   
-  void inorder_traversal(TreeNode* root, int k)
-  {
-    if (root == NULL)
-      return ;
-    
-    inorder_traversal(root->left,k);
-    count++;
-    if (count == k)
-      answer = root->val;
-    
-    inorder_traversal(root->right,k);  
-  }
+  class Solution {
 public:
+    
+    void f(TreeNode* node, int& cnt, int k, int& y){
+        
+        if(node == NULL){
+            return;
+        }
+        
+        
+        f(node->left,cnt,k,y);
+        cnt++;
+        if(cnt == k){
+            y = node->val;
+            return;
+        }
+        f(node->right,cnt,k,y);
+        
+    }
+    
     int kthSmallest(TreeNode* root, int k) {
-      inorder_traversal(root,k);  
-      return answer;
+        
+        int cnt = 0;
+        int y = -1;                    // y = kth small element
+        f(root,cnt,k,y);
+        return y;
     }
 };
