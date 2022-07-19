@@ -1,4 +1,5 @@
 class Solution {
+  // Extension of N^2 algo to find shortest path form a single source to different destination node;
   int Floyyd_Warshall(int n, vector<vector<int>>&edges, int K)
   {
     // Works only for Directed graph
@@ -21,6 +22,13 @@ class Solution {
       // dis[sr][sr] = 0;
       // dis[des][des] = 0;
     }
+    
+    
+    // k represent the middle node
+    // i represent the source node
+    // j represent the destination node
+    // See explanation of Floy Warshall, we need to generate the matrix in some particular order
+    // considering that k form 0 to N, is the middle node and will give the smallest distance for each pari of source and destination
     
     for (int k = 0; k < n; k++)
       for (int i = 0; i < n; i++)
@@ -47,6 +55,17 @@ class Solution {
     }
     return mincity;
   }
+  
+//   int Belmann_Ford (int n, vector<vector<int>> &edges, int K)
+//   {
+//     // Belamnn_Ford also needs the starting to ending point of the road, 
+//     // If the graph is undirected make it a directed one
+    
+//     for (int k = 1; k < n; i++)
+//     {
+      
+//     }
+//   }
 public:
     int findTheCity(int n, vector<vector<int>>& edges, int distanceThreshold) {
         return Floyyd_Warshall(n,edges,distanceThreshold);
