@@ -1,53 +1,73 @@
-class Solution {
+class DisjointSetUnion{
+  int n;
   vector<int> parent;
   vector<int> rank;
   
-  int find_parent(int i)
+  public:
+  DisjointSetUnion(int size)
   {
-    if (parent[i] == i)
-      return i;
+    n = size;
+    parent = vector<int>(n,0);
+    rank = vector<int>(n,0);
     
-    return parent[i] = find_parent(parent[i]);
+    for (int i = 0; i < parent.size(); i++)
+      parent[i] = i;
   }
   
-  void rank_by_union(int x, int y)
+  int get_parent(int n)
   {
-    x = find_parent(x);
-    y = find_parent(y);
+    if (parent[n] == n)
+      return n;
+    return parent[n] = get_parent(parent[n]);
+  }
+  
+  bool union_by_rank(int x, int y)
+  {
+    x = get_parent(x);
+    y = get_parent(y);
     
     if (x == y)
-      return;
-    
-    if (rank[x] > rank[y])
+      return false;
+    else if (rank[x] > rank[y])
       parent[y] = x;
-    else if (rank[x] < rank[y])
+    else if (rank[y] > rank[x])
       parent[x] = y;
     else
     {
       parent[y] = x;
       rank[x]++;
     }
+    return true;
   }
+  
+  int countcomponents()
+  {
+    set<int> parentset;
+    for (int i = 0; i < parent.size(); i++)
+      parentset.insert(get_parent(i));
+    
+    return parentset.size();
+  }
+};
+
+
+
+class Solution {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
-      unordered_map<int,vector<int>> u1;
+        int n = isConnected.size();
       
-      for (int i=  0; i < isConnected[0].size(); i++)
-      {
-        parent.push_back(i);
-        rank.push_back(0);
-      }
+      DisjointSetUnion DSU(n);
       
       for (int i = 0; i < isConnected.size(); i++)
-        for (int j = 0; j < isConnected[0].size(); j++)
-          if (isConnected[i][j] && i != j)
-            rank_by_union(i,j);
-      
-      for (int i = 0; i < parent.size(); i++)
       {
-        parent[i] = find_parent(i);
-        u1[parent[i]].push_back(i);
+        for (int j = 0; j < isConnected[0].size(); j++)
+        {
+          if (isConnected[i][j] && i != j)
+            DSU.union_by_rank(i,j);
+        }
       }
-      return u1.size();
+      
+      return DSU.countcomponents();
     }
 };
