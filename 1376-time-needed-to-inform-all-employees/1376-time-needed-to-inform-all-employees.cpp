@@ -15,7 +15,7 @@ public:
       priority_queue<pi,vector<pi>,greater<pi>> pq;
       min_time[headID] = 0;
       pq.push(make_pair(0,headID));
-      
+      vector<bool> visited(n,true);
       
       while (!pq.empty())
       {
@@ -23,6 +23,10 @@ public:
         int node = pq.top().second;
         
         pq.pop();
+        
+        if (visited[node])
+        {
+          visited[node] = false;
         
         for (int i = 0; i < adj[node].size(); i++)
         {
@@ -34,6 +38,7 @@ public:
             min_time[nextNode] = nexttime + time;
             pq.push(make_pair(min_time[nextNode],nextNode));
           }
+        }
         }
       }
       
