@@ -1,58 +1,70 @@
-class Solution {
-  vector<int> rank;
-  vector<int> parent;
-  
-  int find_parent (int i)
-  {
-    if (parent[i] == i)
-      return i;
-    
-    return parent[i] = find_parent(parent[i]);
-  }
-  
-  // A little modification in union by rank function, 
-  bool union_by_rank(int i, int j)
-  {
-    i = find_parent(i);
-    j = find_parent(j);
-    
-    if (i == j)
-      return true;
-    
-    if (rank[i] > rank[j])
-      parent[j] = i;
-    else if (rank[i] < rank[j])
-      parent[i] = j;
-    else
+class DisjointSetUnion
+{
+    int n;
+    vector<int> parent;
+    vector<int> rank;
+
+    public:
+        DisjointSetUnion(int size)
+        {
+            n = size;
+            parent = vector<int> (n, 0);
+            rank = vector<int> (n, 0);
+
+            for (int i = 0; i < parent.size(); i++)
+                parent[i] = i;
+        }
+
+    int get_parent(int n)
     {
-      parent[j] = i;
-      rank[i]++;
+        if (parent[n] == n)
+            return n;
+        return parent[n] = get_parent(parent[n]);
     }
-    return false;
-  }
-  
-public:
-    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
-        int n = edges.size();
-      
-      // Basic Initialization 
-      for (int i = 0; i <= n; i++)
-      {
-        rank.push_back(0);
-        parent.push_back(i);
-      }
-      
-      for (int i = 0; i <= n ;i++)
-        find_parent(i);
-      
-      for (int i = 0; i < n; i++)
-      {
-        int x = edges[i][0];
-        int y = edges[i][1];
-        
-        if (union_by_rank(x,y))
-          return edges[i];
-      }
-      return {};
+
+    bool union_by_rank(int x, int y)
+    {
+        x = get_parent(x);
+        y = get_parent(y);
+
+        if (x == y)
+            return false;
+        else if (rank[x] > rank[y])
+            parent[y] = x;
+        else if (rank[y] > rank[x])
+            parent[x] = y;
+        else
+        {
+            parent[y] = x;
+            rank[x]++;
+        }
+        return true;
     }
+
+    int countcomponents()
+    {
+        set<int> parentset;
+        for (int i = 0; i < parent.size(); i++)
+            parentset.insert(get_parent(i));
+
+        return parentset.size();
+    }
+};
+
+class Solution
+{
+   	// Basically we need to find that edges on which addition to the graph does not connects two different components of the graph
+    public:
+        vector<int> findRedundantConnection(vector<vector < int>> &edges) {
+          int n = edges.size();
+          
+          DisjointSetUnion DSU(n+1);
+          vector<int> answer;
+          for (int i = 0; i < edges.size(); i++)
+          {
+            if (!DSU.union_by_rank(edges[i][0],edges[i][1]))
+              answer = edges[i];
+          }
+          return answer;
+        }
 };
