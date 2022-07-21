@@ -1,1 +1,1 @@
-Easiest way, when we are making the connections, we should keep a track of how many redundant connection, have been made, this can be donw by modifiying the union ny rank function, such that, it return true, if we try to connected already connected components
+​
