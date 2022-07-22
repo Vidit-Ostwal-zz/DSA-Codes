@@ -65,9 +65,9 @@ public:
         }
       }
       
-      show_vector(starting);
-      show_vector(ending);
-      show_vector(fuel_left);
+      // show_vector(starting);
+      // show_vector(ending);
+      // show_vector(fuel_left);
       
       for (int i = 0; i < n; i++)
       {
