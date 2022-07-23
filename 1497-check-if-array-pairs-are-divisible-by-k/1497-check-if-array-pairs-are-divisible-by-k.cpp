@@ -8,7 +8,7 @@ public:
       
       for (int i = 0; i < arr.size(); i++)
       {
-        cout << ((arr[i] % k) + k)%k<< endl;
+        // cout << ((arr[i] % k) + k)%k<< endl;
         map1[((arr[i] % k) + k)%k]++;
       }
       
