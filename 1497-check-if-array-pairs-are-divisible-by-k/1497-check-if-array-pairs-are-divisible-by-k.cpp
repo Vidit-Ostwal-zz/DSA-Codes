@@ -4,7 +4,7 @@ public:
         
       // We first need to change the argument into which is going to divide which one
       
-      map<int,int> map1;
+      unordered_map<int,int> map1;
       
       for (int i = 0; i < arr.size(); i++)
       {
