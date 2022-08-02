@@ -12,6 +12,9 @@ public:
             maxh.pop();
         }
       }
-      return maxh.top();
+      
+      int answer = maxh.top();
+      // maxh.erase()
+      return answer;
     }
 };
