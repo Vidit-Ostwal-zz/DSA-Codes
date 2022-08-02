@@ -62,7 +62,7 @@ public:
       int answer = -1;
       find_distance(edges,n);
       
-      show_vector(distance);
+      // show_vector(distance);
       for (int i = 1; i < n; i++)
       {
         int time_required = distance[i] * 2;
