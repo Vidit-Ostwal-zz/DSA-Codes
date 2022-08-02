@@ -45,15 +45,6 @@ class Solution {
       dis++;
     }
   }
-  
-   void show_vector(vector<int> vect)
- {
-  for (auto &it: vect)
-  {
-   cout << it << " ";
-  }
-  cout << endl;
- }
 
 public:
     int networkBecomesIdle(vector<vector<int>>& edges, vector<int>& patience) {
