@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> mergeSimilarItems(vector<vector<int>>& items1, vector<vector<int>>& items2) {
-        map<int,int> map1;
+        unordered_map<int,int> map1;
       
       for (int i = 0; i < items1.size(); i++)
         map1[items1[i][0]] += items1[i][1];
@@ -19,6 +19,7 @@ public:
         it++;
       }
       
+      sort(answer.begin(),answer.end());
       return answer;
     }
 };
