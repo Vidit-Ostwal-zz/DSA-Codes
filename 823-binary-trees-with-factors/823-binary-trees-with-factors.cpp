@@ -12,20 +12,27 @@ public:
         int curr_number = arr[i];
         long long temp_answer = 1;
         
-        for (int i = 1; i <= pow(curr_number,0.5); i++)
+        // for (int i = 1; i <= pow(curr_number,0.5); i++)
+        // {
+        //   if (curr_number % i == 0 && prev_values[i] && prev_values[curr_number/i])
+        //   {
+        //     int flag = 2;
+        //     if (curr_number/i == i)
+        //       flag = 1;
+        //     temp_answer += flag * dp[prev_values[i]-1] * dp[prev_values[curr_number/i]-1];
+        //   }
+        // }
+        
+        for (int j = 0; j < i ; j++)
         {
-          if (curr_number % i == 0 && prev_values[i] && prev_values[curr_number/i])
+          if (curr_number % arr[j] == 0 && prev_values[curr_number / arr[j]])
           {
-            int flag = 2;
-            if (curr_number/i == i)
-              flag = 1;
-            temp_answer += flag * dp[prev_values[i]-1] * dp[prev_values[curr_number/i]-1];
+            temp_answer += dp[prev_values[arr[j]]-1]*dp[prev_values[curr_number/arr[j]]-1];
           }
         }
         dp[i] = temp_answer;
         prev_values[arr[i]] = i+1;
         answer += temp_answer;
-        // cout << temp_answer << endl;
       }
       return answer % (int)(pow(10,9) + 7);
     }
