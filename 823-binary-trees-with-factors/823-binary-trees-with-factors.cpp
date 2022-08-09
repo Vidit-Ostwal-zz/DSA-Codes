@@ -24,12 +24,9 @@ public:
         // }
         
         for (int j = 0; j < i ; j++)
-        {
           if (curr_number % arr[j] == 0 && prev_values[curr_number / arr[j]])
-          {
             temp_answer += dp[prev_values[arr[j]]-1]*dp[prev_values[curr_number/arr[j]]-1];
-          }
-        }
+        
         dp[i] = temp_answer;
         prev_values[arr[i]] = i+1;
         answer += temp_answer;
